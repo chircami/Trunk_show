@@ -178,11 +178,2254 @@
     // ESTRUCTURA ACTUALIZADA: Se cambiaron 'amount' por 'fiscal', 'currency' por 'comercial', 
     // 'service' por 'address' (descripción del servicio). Se eliminaron 'language' y 'city'.
     const CLIENT_DATABASE = {
-        "IT0003": { clientCode: "IT0003", name: "D'avino", email: "carlos.perez@example.com", fiscal: "5,000", comercial: "EUR", address: "Diseño Web" },
-        "FR0114": { clientCode: "FR0114", name: "Alice Johnson", email: "alice.j@example.com", fiscal: "1,200", comercial: "USD", address: "Marketing Strategy" },
-        "DE0054": { clientCode: "DE0054", name: "François Dubois", email: "francois.d@example.com", fiscal: "3,500", comercial: "EUR", address: "Conseil Fiscal" },
-        "CUS-004": { clientCode: "CUS-004", name: "Giulia Rossi", email: "giulia.r@example.com", fiscal: "6,000", comercial: "EUR", address: "Sviluppo Software" },
-        "CUS-005": { clientCode: "CUS-005", name: "Juan Delgado", email: "juan.delgado@example.com", fiscal: "10,000", comercial: "USD", address: "Consultoría Estratégica" },
+        "ES0401": {
+        "clientCode": "ES0401",
+        "comercial": "LIBELLA NOVIAS",
+        "name": "VILLANUEVA VILLAPALOS SL",
+        "fiscal": "B45237542",
+        "email": "administracion@villanuevavillapalos.com",
+        "adress": "CALLE TRINIDAD 39, 45600 Talavera de la Reina, TOLEDO, España"
+    },
+    "SG0404": {
+        "clientCode": "SG0404",
+        "comercial": "GENTLE IN WHITE",
+        "name": "GENTLE IN WHITE PTE LTD",
+        "fiscal": "202403143K",
+        "email": "gentleinwhite@gmail.com",
+        "adress": "81 UBI AVENUE, #02-22 UB. ONE, 408830 Singapur, Singapur"
+    },
+    "AT0060": {
+        "clientCode": "AT0060",
+        "comercial": "STEINECKER HOCHZEITSMODE",
+        "name": "STEINECKER MODEN GMBH",
+        "fiscal": "ATU20147605",
+        "email": "invoice@steinecker.at",
+        "adress": "RANDEGG 34, 3263 RANDEGG, Austria"
+    },
+    "AT0214": {
+        "clientCode": "AT0214",
+        "comercial": "STEINECKER HOCHZEITSMODE",
+        "name": "STEINECKER MODEN GMBH, RANDEGG",
+        "fiscal": "ATU20147605",
+        "email": "invoice@steinecker.at",
+        "adress": "RANDEGG 34, 3263 RANDEGG, Austria"
+    },
+    "AT0304": {
+        "clientCode": "AT0304",
+        "comercial": "STEINECKER HOCHZEITSMODE",
+        "name": "STEINECKER MODEN GMBH, SALZBURG",
+        "fiscal": "ATU20147605",
+        "email": "OFFICE@STEINECKER.AT",
+        "adress": "RANDEGG 34, 3263 RANDEGG, Austria"
+    },
+    "AT0323": {
+        "clientCode": "AT0323",
+        "comercial": "TOP MODEN BALASKOVICS",
+        "name": "TOP MODEN BALASKOVICS GMBH",
+        "fiscal": "ATU21340608",
+        "email": "topmoden@balaskovics.at",
+        "adress": "DORNBURGGASSE 66, 7400 OBERWART, Austria"
+    },
+    "AT0335": {
+        "clientCode": "AT0335",
+        "comercial": "HANSEL & GRETEL",
+        "name": "BRAUT-UND ABENDMODEN GMBH HÄNSEL & GRETEL",
+        "fiscal": "ATU42604008",
+        "email": "accounting@haenselundgretel.at",
+        "adress": "LINDENTHALSTR. 1, 4623 GUNSKIRCHEN, Österreich"
+    },
+    "BE0202": {
+        "clientCode": "BE0202",
+        "comercial": "JPC COLLECTION",
+        "name": "NV PROJECT BUILDING",
+        "fiscal": "BE0455626420",
+        "email": "gaiana@jpccollection.be",
+        "adress": "Markgravelei 148, 2018 Antwerpen, Bélgica"
+    },
+    "BR0374": {
+        "clientCode": "BR0374",
+        "comercial": "ATELIER SILVIA FREGONESE",
+        "name": "ATELIER SILVIA FREGONESE",
+        "fiscal": "12.345.678/0001-95",
+        "email": "silvia@ateliersilviafregonese.com.br",
+        "adress": "Av. N. Sra. da Luz, 1414 - Hugo Lange,, 80000 Curitiba, Paraná, Brasil"
+    },
+    "CH0163": {
+        "clientCode": "CH0163",
+        "comercial": "LILUCA ST. GALLEN",
+        "name": "LILUCA ST. GALLEN",
+        "fiscal": "CHE-112.806.559 MWST",
+        "email": "office@liluca.ch",
+        "adress": "ST.LEONHARDSTRASSE 31, 9000 ST.GALLEN, Suiza"
+    },
+    "CH0164": {
+        "clientCode": "CH0164",
+        "comercial": "LILUCA ZÜRICH",
+        "name": "LILUCA SUISSE AG",
+        "fiscal": "CHE-105.840.597 MWST",
+        "email": "zuerich@liluca.ch",
+        "adress": "Werdmühleplatz 4, 8001 Zürich, Zürich, Schweiz"
+    },
+    "CH0266": {
+        "clientCode": "CH0266",
+        "comercial": "HOCHZEITS - TRÄUME",
+        "name": "HOCHZEITS-TRÄUME AG",
+        "fiscal": "CHE-407.676.821 TVA",
+        "email": "INFO@HOCHZEITS-TRAEUME.CH",
+        "adress": "STANSSTADERSTR. 59, 6370 STANS, Nidwalden, Suiza"
+    },
+    "CL0391": {
+        "clientCode": "CL0391",
+        "comercial": "PUNTO CLAVE NOVIAS",
+        "name": "SOCIEDAD KRI AMAR HERMANOS LTDA",
+        "fiscal": "78488940-8",
+        "email": "kattia@puntoclave.cl",
+        "adress": "Av. Presidente Riesco 3144, 755413 Santiago, Metropolitana, Chile"
+    },
+    "CO0365": {
+        "clientCode": "CO0365",
+        "comercial": "AURA NOVIAS - BOGOTÁ",
+        "name": "BLANCA MORA ORREGO",
+        "fiscal": "51772670-2",
+        "email": "gerencia.auranovias@gmail.com",
+        "adress": "Calle 94A # 11A - 66, 110221 Bogotá, Bogotá, Colombia"
+    },
+    "CO0379": {
+        "clientCode": "CO0379",
+        "comercial": "SPOSA MIA",
+        "name": "SPOSA MIA SAS",
+        "fiscal": "900656784-6",
+        "email": "comercial@sposamia.com.co",
+        "adress": "Av. de la Cantera 8937, Misiones III Etapa, 31216 CHIHUAHUA, Chihuahua, México"
+    },
+    "CO0399": {
+        "clientCode": "CO0399",
+        "comercial": "AURA NOVIAS.",
+        "name": "JUAN ESTEBAN VILLA LONDOÑO.",
+        "fiscal": "71333853-3",
+        "email": "gerencia.auranovias@gmail.com",
+        "adress": "Carrera 32 # 13-49, Medellin, Antioquia, Colombia"
+    },
+    "CR0376": {
+        "clientCode": "CR0376",
+        "comercial": "ALCALA ATELIER",
+        "name": "OLGA PICADO GATGENS",
+        "fiscal": "NIFF11482",
+        "email": "picadogatgens03@yahoo.com",
+        "adress": "LOCAL F105 ALCALA ATELIER CENTRO COMERCIAL AVENIDA ESCAZU SAN JOSE, 10203 San Jose, San José, Costa Rica"
+    },
+    "CY0053": {
+        "clientCode": "CY0053",
+        "comercial": "PRIMALICIA",
+        "name": "21 DESIGN LTD",
+        "fiscal": "CY10380884V",
+        "email": "vasiliki@primalicia.com",
+        "adress": "55 ARCH. MAKARIOU C´AVE, 1070 NICOSIA, Chipre"
+    },
+    "CZ0383": {
+        "clientCode": "CZ0383",
+        "comercial": "NOVIAS SVATEBNI DUM",
+        "name": "NOVIAS SVATEBNI DUM S.R.O.",
+        "fiscal": "CZ11770635",
+        "email": "svatebnidum@novias.cz",
+        "adress": "SIROKA 452/31, 070 01 České Budějovice 1,, República Checa"
+    },
+    "DE0038": {
+        "clientCode": "DE0038",
+        "comercial": "AT MODA SPOSA",
+        "name": "AT MODA SPOSA GMBH",
+        "fiscal": "DE355059790",
+        "email": "info@at-moda-sposa.de",
+        "adress": "UNTERLINDEN 9, 79098 FREIBURG IM BREISGAU, Freiburg, Alemania"
+    },
+    "DE0123": {
+        "clientCode": "DE0123",
+        "comercial": "ANNA MODA HOCHZEITS - UND ABENDMODE",
+        "name": "ANNA MODA GMBH & CO.KG",
+        "fiscal": "DE267226425",
+        "email": "INFO@ANNA-MODA.COM",
+        "adress": "Mittelstrasse 16-18, 50672 Köln, Deutschland"
+    },
+    "DE0134": {
+        "clientCode": "DE0134",
+        "comercial": "CRUSZ BERLIN",
+        "name": "CRUSZ GMBH",
+        "fiscal": "DE815028058",
+        "email": "info@crusz.de",
+        "adress": "SPITTELMARKT 11-12, 10117 BERLIN, Berlin, Deutschland"
+    },
+    "DE0137": {
+        "clientCode": "DE0137",
+        "comercial": "FEMININ BRAUTMODE",
+        "name": "FEMININ BRAUTMODE BEATE PROHN",
+        "fiscal": "DE313220772",
+        "email": "BRAUTMODE@FEMININ-HAMBURG.DE",
+        "adress": "LEHMWEG 52, 20251 HAMBURG, Deutschland"
+    },
+    "DE0140": {
+        "clientCode": "DE0140",
+        "comercial": "FLAMENCO BRAUTMODEN",
+        "name": "FLAMENCO BRAUTMODEN",
+        "fiscal": "DE815671977",
+        "email": "INFO@FLAMENCO-MUNICH.DE",
+        "adress": "TRAUTENWOLFSTR. 5, 80802 MÜNCHEN, Alemania"
+    },
+    "DE0141": {
+        "clientCode": "DE0141",
+        "comercial": "RENATE BAUER BRAUTMODEN",
+        "name": "RENATE BAUER BRAUTMODEN",
+        "fiscal": "DE146490323",
+        "email": "INFO@BRAUTMODEN-BAUER.DE",
+        "adress": "EINHORNSTR. 5, 72138 KIRCHENTELLINGSFURT, Baden-Württemberg, Deutschland"
+    },
+    "DE0142": {
+        "clientCode": "DE0142",
+        "comercial": "LA MONIQUE",
+        "name": "LA MONIQUE BELINDA BOOS",
+        "fiscal": "DE153512945",
+        "email": "INFO@LA-MONIQUE.DE",
+        "adress": "HOLZSTRASSE 44, 88512 MENGEN, Deutschland"
+    },
+    "DE0143": {
+        "clientCode": "DE0143",
+        "comercial": "LA DONNA HOCHZEITSATELIER",
+        "name": "CAROLA GRABS LA DONNA HOCHZEITSATELIER",
+        "fiscal": "DE254398088",
+        "email": "info@ladonna-hochzeitsatelier.de",
+        "adress": "WALDSTRASSE 4, 84069 SCHIERLING, Bayern, Deutschland"
+    },
+    "DE0148": {
+        "clientCode": "DE0148",
+        "comercial": "HERZZAUBER",
+        "name": "HERZZAUBER MARION FERBER",
+        "fiscal": "DE815497462",
+        "email": "SERVICE@HERZZAUBER.DE",
+        "adress": "Bahnhofstraße 4 d, 85101 Lenting, Bayern, Deutschland"
+    },
+    "DE0153": {
+        "clientCode": "DE0153",
+        "comercial": "DIE BRAUTGALERIE",
+        "name": "DIE BRAUTGALERIE GBR - MELANIE UND ALEXANDER KORSCHE",
+        "fiscal": "DE815189412",
+        "email": "INFO@DIE-BRAUTGALERIE.DE",
+        "adress": "Naabstrasse 9, 92660 NEUSTADT/WN, Deutschland"
+    },
+    "DE0155": {
+        "clientCode": "DE0155",
+        "comercial": "WEISS ZU SCHWARZ - DEIN BRAUTKLEID",
+        "name": "WEISS ZU SCHWARZ - ANGELA MARION STÖCKEL",
+        "fiscal": NaN,
+        "email": "INFO@WEISS-ZU-SCHWARZ.DE",
+        "adress": "OFFENBACHER LANDSTRASSE 368 - GEBÄUDE D, 60599 FRANKFURT, Alemania"
+    },
+    "DE0172": {
+        "clientCode": "DE0172",
+        "comercial": "ELAINE FERLITA SPOSA",
+        "name": "ELAINE FERLITA SPOSA",
+        "fiscal": "DE815767642",
+        "email": "MAIL@DIE-ERLEBNISHOCHZEIT.DE",
+        "adress": "FAHRGASSE 5, 65549 LIMBURG, Hessen, Deutschland"
+    },
+    "DE0173": {
+        "clientCode": "DE0173",
+        "comercial": "ANABELLA PRIVÉE",
+        "name": "ANA-ISABEL GMBH",
+        "fiscal": "DE126113043",
+        "email": "INFO@ANABELLA-MUENSTER.DE",
+        "adress": "EISENBAHNSTRASSE 11, 48143 MÜNSTER, Deutschland"
+    },
+    "DE0180": {
+        "clientCode": "DE0180",
+        "comercial": "BRAUT UND ABENDMODEN HANNEKEN",
+        "name": "HANNEKEN TEXTILHANDELSGESELLSCHAFT GMBH",
+        "fiscal": "DE246394378",
+        "email": "INFO@HANNEKEN.DE",
+        "adress": "MOORSTRASSE 19, 26169 FRIESOYTHE, Alemania"
+    },
+    "DE0187": {
+        "clientCode": "DE0187",
+        "comercial": "BRAUTMODE CLAUDIA KLIMM",
+        "name": "BRAUTMODE CLAUDIA KLIMM",
+        "fiscal": "DE313290571",
+        "email": "contact@brautmode-claudia-klimm.com",
+        "adress": "WUPPERSTRASSE 4, 40219 DÜSSELDORF, Nordrhein-Westfalen, Alemania"
+    },
+    "DE0192": {
+        "clientCode": "DE0192",
+        "comercial": "MODE BÖSCKENS",
+        "name": "MODE BÖSCKENS E.K.",
+        "fiscal": "DE272677874",
+        "email": "invoice@boesckens.de",
+        "adress": "GEWERBESTR. SÜD 52A, 41812 ERKELENZ, Nordrhein-Westfalen, Deutschland"
+    },
+    "DE0198": {
+        "clientCode": "DE0198",
+        "comercial": "MODEHAUS STARP",
+        "name": "MODEHAUS STARP OHG",
+        "fiscal": "DE252514989",
+        "email": "MODEHAUS@STARP.ORG",
+        "adress": "FÜRSTENSTRASSE 4-8, 33415 VERL / KAUNITZ, Nordrhein-Westfalen, Alemania"
+    },
+    "DE0223": {
+        "clientCode": "DE0223",
+        "comercial": "FOREVER BRAUTMODEN",
+        "name": "WEITZEL NANCY",
+        "fiscal": "DE206518492",
+        "email": "INFO@FOREVER-BRAUTMODEN.DE",
+        "adress": "Frankfurter Str. 58, 65239 Hochheim, Hessen, Deutschland"
+    },
+    "DE0244": {
+        "clientCode": "DE0244",
+        "comercial": "DAS EINZIGARTIG",
+        "name": "DAS EINZIGARTIG ANNA BARTH",
+        "fiscal": "DE317175259",
+        "email": "HELLO@DAS-EINZIGARTIG.DE",
+        "adress": "HAUPTSTR. 1B, 38179 SCHWÜLPER, Alemania"
+    },
+    "DE0263": {
+        "clientCode": "DE0263",
+        "comercial": "LIN - RIEHL DAS HOCHZEITSHAUS",
+        "name": "LIN-RIEHL DAS HOCHZEITSHAUS",
+        "fiscal": "DE814363704",
+        "email": "INFO@LINRIEHL-BRAUTMODE.DE",
+        "adress": "Vornhäger Str. 1, 31655 Stadthagen (Niedersachsen), Niedersachsen, Germany"
+    },
+    "DE0275": {
+        "clientCode": "DE0275",
+        "comercial": "HAPPY BRAUTMODEN",
+        "name": "HAPPY BRAUTMODEN FAUTH-LINKE / VON HARBOU",
+        "fiscal": "DE300541972",
+        "email": "INFO@HAPPY-BRAUTMODEN.DE",
+        "adress": "HOLZSTR. 30, 80469 MÜNCHEN, Bayern, Alemania"
+    },
+    "DE0298": {
+        "clientCode": "DE0298",
+        "comercial": "BRAUTBLÜTE DÜSSELDORF",
+        "name": "BRAUTBLÜTE GMBH",
+        "fiscal": "DE315531199",
+        "email": "duesseldorf@brautbluete.de",
+        "adress": "Stresemannstraße 26, 40210 Düsseldorf, Nordrhein-Westfalen, Deutschland"
+    },
+    "DE0313": {
+        "clientCode": "DE0313",
+        "comercial": "KERST HOCHZEITSMODE",
+        "name": "KERST HOCHZEITSMODE - SIMON KERST",
+        "fiscal": "DE339934264",
+        "email": "info@kerst-hochzeitsmode.de",
+        "adress": "FRIESENSTRASSE 16, 71640 LUDWIGSBURG-OSSWEIL, Baden-Württemberg, Deutschland"
+    },
+    "DE0318": {
+        "clientCode": "DE0318",
+        "comercial": "HIMMELREICH BRAUTMODEN",
+        "name": "HIMMELREICH BRAUTMODEN-KERSTIN WALTER KRAUS",
+        "fiscal": "DE322692050",
+        "email": "INFO@HIMMELREICH-STORE.DE",
+        "adress": "HAUPTSTRASSE 317, 66773 SCHWALBACH, Saarland, Deutschland"
+    },
+    "DE0320": {
+        "clientCode": "DE0320",
+        "comercial": "WHITE AND NIGHT BRAUTMODE UND ABENDMODE",
+        "name": "WHITE AND NIGHT GMBH",
+        "fiscal": "DE321081741",
+        "email": "kh@whiteandnight.de",
+        "adress": "KRÖPCKE PASSAGE 9-11, 30159 HANNOVER, Niedersachsen, Deutschland"
+    },
+    "DE0324": {
+        "clientCode": "DE0324",
+        "comercial": "Haus der Braut",
+        "name": "Haus der Braut in Haag Gmbh",
+        "fiscal": "DE295664275",
+        "email": "info@hausderbraut.de",
+        "adress": "Hauptstraße 2, 83527 Haag in Oberbayern, Deutschland"
+    },
+    "DE0325": {
+        "clientCode": "DE0325",
+        "comercial": "MARIE AMOUR BRAUTBOUTIQUE",
+        "name": "Marie Amour Brautboutique",
+        "fiscal": "DE239380127",
+        "email": "elena@marie-amour.de",
+        "adress": "Rottenberger Weg 25, 45549 Sprockhövel, Nordrhein-Westfalen, Deutschland"
+    },
+    "DE0326": {
+        "clientCode": "DE0326",
+        "comercial": "SAY JESS DEIN BRAUTLADEN",
+        "name": "Say Jess - Dein Brautladen",
+        "fiscal": "DE272263919",
+        "email": "info@sayjess.de",
+        "adress": "Am Schulwäldchen 18, 63110 RODGAU, Hessen, Deutschland"
+    },
+    "DE0327": {
+        "clientCode": "DE0327",
+        "comercial": "DA VINCI BRAUT-ABENDMODEN",
+        "name": "Da Vinci Brautmoden Stuttgart",
+        "fiscal": "DE246729451",
+        "email": "nihal@davincisposa.com",
+        "adress": "KÖNIGSTR 22, 70173 STUTTGART, Baden-Württemberg, Deutschland"
+    },
+    "DE0368": {
+        "clientCode": "DE0368",
+        "comercial": "HOCHZEITSHAUS STRUCK",
+        "name": "HOCHZEITSHAUS STRUCK - DANIEL STRUCK",
+        "fiscal": "DE815193780",
+        "email": "info@hochzeitshaus-struck.de",
+        "adress": "Heinrich-Hertz-Straße 1, 40789 Monheim am Rhein, Nordrhein-Westfalen, Deutschland"
+    },
+    "DE0396": {
+        "clientCode": "DE0396",
+        "comercial": "MARIE BERNAL",
+        "name": "MARIE BERNAL GBR",
+        "fiscal": "DE359301864",
+        "email": "purchase@mariebernal.com",
+        "adress": "IM AMTMANN 7, 35578 Wetzlar, Hessen, Alemania"
+    },
+    "DK0390": {
+        "clientCode": "DK0390",
+        "comercial": "FUHRMANNS BRUDEKJOLER",
+        "name": "HANNE FUHRMANN",
+        "fiscal": "DK32401570",
+        "email": "info@fuhrmanns.dk",
+        "adress": "Theilgaards Allee 6, 4600 Køge, Dinamarca"
+    },
+    "ES0025": {
+        "clientCode": "ES0025",
+        "comercial": "HIGAR NOVIAS",
+        "name": "HIGAR MODA S.L.",
+        "fiscal": "B14326490",
+        "email": "tienda@higarnovias.com",
+        "adress": "CALLE PORTALES 31, 14120 FUENTE PALMERA, Córdoba, España"
+    },
+    "ES0028": {
+        "clientCode": "ES0028",
+        "comercial": "CORREDERA NOVIA & FIESTA",
+        "name": "NAOITE OLOT S.L.",
+        "fiscal": NaN,
+        "email": "info@correderanuvia.com",
+        "adress": "PLAZA CATALUNYA 5, 17800 OLOT, España"
+    },
+    "ES0030": {
+        "clientCode": "ES0030",
+        "comercial": "MUA COLLECTIONS",
+        "name": "MUA COLLECTIONS S.L.U.",
+        "fiscal": NaN,
+        "email": "carlosguirao@yahoo.es",
+        "adress": "CALLE CUNA 26, 41004 SEVILLA, Sevilla, España"
+    },
+    "ES0031": {
+        "clientCode": "ES0031",
+        "comercial": "NOVIGRAN S.L.U.47",
+        "name": "NOVIGRAN S.L.U.47",
+        "fiscal": "ESB56992944",
+        "email": "vrios@novigran.com",
+        "adress": "PLAZA DEL LINO, 1, 18002 GRANADA, Granada, España"
+    },
+    "ES0042": {
+        "clientCode": "ES0042",
+        "comercial": "MI TIENDA HERMANOS DIAZ CALERO",
+        "name": "MI TIENDA HERMANOS DIAZ CALERO C.B.",
+        "fiscal": "E06580583",
+        "email": "mitienda.merida@gmail.com",
+        "adress": "Santa Eulalia, 18, 06800 MERIDA, España"
+    },
+    "ES0044": {
+        "clientCode": "ES0044",
+        "comercial": "LENANA NOVIAS",
+        "name": "JEJO BRIDE SL",
+        "fiscal": "B19858216",
+        "email": "info@lenana.es",
+        "adress": "Calle las Bocas, 13, 21001 Huelva, Huelva, España"
+    },
+    "ES0059": {
+        "clientCode": "ES0059",
+        "comercial": "FONTELO NOVIAS",
+        "name": "JOSE RAMON LOPEZ RIOS",
+        "fiscal": "33851780N",
+        "email": "jramonfn@gmail.com",
+        "adress": "CALLE BISPO AGUIRRE 1, 27002 LUGO, España"
+    },
+    "ES0063": {
+        "clientCode": "ES0063",
+        "comercial": "SPOSA NOVIAS",
+        "name": "M TERESA VAZQUEZ DOPICO",
+        "fiscal": "34908824E",
+        "email": "contacto@sposanovias.es",
+        "adress": "CALLE CARRAL 6, 36202 VIGO, España"
+    },
+    "ES0073": {
+        "clientCode": "ES0073",
+        "comercial": "TIARA CEREMONIAS",
+        "name": "TIARA CEREMONIAS SL",
+        "fiscal": NaN,
+        "email": "tiaraceremonias@gmail.com",
+        "adress": "CALLE ALLOZA 5, 12001 CASTELLON, España"
+    },
+    "ES0080": {
+        "clientCode": "ES0080",
+        "comercial": "ENTRENOVIAS",
+        "name": "ENTRENOVIAS TOMELLOSO SOCIEDAD LIMITADA.",
+        "fiscal": "B13587100",
+        "email": "compras@entrenovias.es",
+        "adress": "CALLE SAN PEDRO 11, 13700 TOMELLOSO, Ciudad Real, España"
+    },
+    "ES0089": {
+        "clientCode": "ES0089",
+        "comercial": "SEDKA NOVIAS",
+        "name": "BRIDAL FUTURE S.L",
+        "fiscal": "B16690505",
+        "email": "SEDKANOVIAS@YAHOO.ES",
+        "adress": "CARRER CANUDAS 9, 08820 EL PRAT DE LLOBREGAT, España"
+    },
+    "ES0092": {
+        "clientCode": "ES0092",
+        "comercial": "PAOLA NOVIAS",
+        "name": "IBERNOVIA S.L",
+        "fiscal": "B23287824",
+        "email": "contabilidad@ibernovia.es",
+        "adress": "CALLE SAN FRANCISCO 4, 23740 ANDUJAR, España"
+    },
+    "ES0095": {
+        "clientCode": "ES0095",
+        "comercial": "SUITE NOVIAS",
+        "name": "BELEN GARCIA GARRIDO",
+        "fiscal": "07478344D",
+        "email": "INFO@SUITENOVIAS.COM",
+        "adress": "CALLE ALMIBAR 71, 28300 ARANJUEZ, Madrid, España"
+    },
+    "ES0096": {
+        "clientCode": "ES0096",
+        "comercial": "VAINISE BODAS",
+        "name": "CREACIONES BAINISE SL.",
+        "fiscal": NaN,
+        "email": "creacionesbainise@gmail.com",
+        "adress": "PASEO EXTREMADURA 7, 28921 ALCORCON, Madrid, España"
+    },
+    "ES0100": {
+        "clientCode": "ES0100",
+        "comercial": "NOVIGRAN S.L.U.47",
+        "name": "NOVIGRAN S.L.U.47, CHANTU NOVIAS (ES100",
+        "fiscal": "ESB56992944",
+        "email": "vrios@novigran.com",
+        "adress": "PLAZA DEL LINO, 1, 18002 GRANADA, Granada, España"
+    },
+    "ES0113": {
+        "clientCode": "ES0113",
+        "comercial": "EL CLAVEL",
+        "name": "LA CASA DEL CLAVEL SL",
+        "fiscal": "B45515525",
+        "email": "contabilidad@elclavel.com",
+        "adress": "CALLE LISBOA, 6 - 10, 45005 TOLEDO, Toledo, España"
+    },
+    "ES0120": {
+        "clientCode": "ES0120",
+        "comercial": "NOVIGRAN S.L.U.47",
+        "name": "NOVIGRAN S.L.U.47, SAN PATRICK ALMERIA (ES0120",
+        "fiscal": "ESB56992944",
+        "email": "vrios@novigran.com",
+        "adress": "PLAZA DEL LINO, 1, 18002 GRANADA, Granada, España"
+    },
+    "ES0128": {
+        "clientCode": "ES0128",
+        "comercial": "ILUSION BOUTIQUE",
+        "name": "ILUSION NOVIAS MARTOS S.L.",
+        "fiscal": NaN,
+        "email": "MTLDMARTINEZLEON@GMAIL.COM",
+        "adress": "AVENIDA ACEITUNEROS, 1 - BJ, 23600 MARTOS, Jaén, España"
+    },
+    "ES0144": {
+        "clientCode": "ES0144",
+        "comercial": "DIANA HERRERO",
+        "name": "DIANA HERRERO IGLESIAS",
+        "fiscal": "45132909D",
+        "email": "DIANA_HERRERO@HOTMAIL.COM",
+        "adress": "RUA ZAPATERIA 15, 10600 PLASENCIA, Cáceres, España"
+    },
+    "ES0150": {
+        "clientCode": "ES0150",
+        "comercial": "NOVIAS PEPITA DUEÑAS",
+        "name": "JOSEFA DUEÑAS BORREGO",
+        "fiscal": "08627200S",
+        "email": "PEPITADUENASBORREGO@GMAIL.COM",
+        "adress": "RAMON Y CAJAL 14, 06400 DON BENITO, Badajoz, España"
+    },
+    "ES0200": {
+        "clientCode": "ES0200",
+        "comercial": "EVA NOVIAS",
+        "name": "GOVELY NUPCIAL SL.",
+        "fiscal": "B80425614",
+        "email": "raul@evanovias.com; alicia@evanovias.com",
+        "adress": "Calle Avenida de Felipe II, 22 - 1ºIzquierda, 28009 Madrid, Madrid, España"
+    },
+    "ES0211": {
+        "clientCode": "ES0211",
+        "comercial": "NOVIAS NOVIAS",
+        "name": "NOVIAS NOVIAS-MARIA LINAREJOS ORTEGA GARCIA",
+        "fiscal": "26195752V",
+        "email": "noviasnovias23@gmail.com",
+        "adress": "ISAAC PERAL 31, 23700 LINARES, Jaén, España"
+    },
+    "ES0212": {
+        "clientCode": "ES0212",
+        "comercial": "CARMEN HORNEROS",
+        "name": "ULPIANO LOPEZ SOBRINO",
+        "fiscal": "05644284S",
+        "email": "INFO@CARMENHORNEROS.COM",
+        "adress": "CALLE CORREOS 28, 13260 Bolaños de Calatrava, Ciudad Real, España"
+    },
+    "ES0347": {
+        "clientCode": "ES0347",
+        "comercial": "SEDKA NOVIAS",
+        "name": "BRIDAL FUTURE S.L, SEDKA BCN",
+        "fiscal": "B16690505",
+        "email": "olgapedidosbcn@yahoo.com",
+        "adress": "CARRER CANUDAS 9, 08820 EL PRAT DE LLOBREGAT, España"
+    },
+    "ES0348": {
+        "clientCode": "ES0348",
+        "comercial": "SEDKA NOVIAS",
+        "name": "BRIDAL FUTURE S.L, SEDKA MADRID",
+        "fiscal": "B16690505",
+        "email": "pedidosmadrid@sedkanovias.es",
+        "adress": "CARRER CANUDAS 9, 08820 EL PRAT DE LLOBREGAT, España"
+    },
+    "ES0351": {
+        "clientCode": "ES0351",
+        "comercial": "LOVE IS IN THE AIR",
+        "name": "IT DRESS PROJECT SL",
+        "fiscal": "B87014718",
+        "email": "info@loveisintheair.es",
+        "adress": "Calle Claudio Coello, 130, 28006 Madrid, Madrid, España"
+    },
+    "ES0352": {
+        "clientCode": "ES0352",
+        "comercial": "SEDKA NOVIAS",
+        "name": "BRIDAL FUTURE SL",
+        "fiscal": "B16690505",
+        "email": "pedidosmadrid@sedkamadrid.es",
+        "adress": "CARRER CANUDAS 9, 08820 EL PRAT DE LLOBREGAT, España"
+    },
+    "ES0400": {
+        "clientCode": "ES0400",
+        "comercial": "NIA COSTURA",
+        "name": "VILLAPALOS NOVIA SL",
+        "fiscal": "B45819364",
+        "email": "administracion@villapalosnovia.com",
+        "adress": "C/LISBOA 4, 45005 TOLEDO, España"
+    },
+    "FR0009": {
+        "clientCode": "FR0009",
+        "comercial": "LA DIVINE",
+        "name": "SARL LA DIVINE",
+        "fiscal": "FR83535165740",
+        "email": "ariane.gandolfi@gmail.com",
+        "adress": "ESPACE COMMERCIAL HOTEL LANCONE RN 193, 20620 BIGUGLIA, Francia"
+    },
+    "FR0014": {
+        "clientCode": "FR0014",
+        "comercial": "LES MARIÉES D'EMILIE",
+        "name": "LES MARIÉES D'EMILIE",
+        "fiscal": "FR80389592213",
+        "email": "emilie@rmcd.fr",
+        "adress": "12 ALLEE DES CINQ CONTINENTS, 44120 VERTOU, France"
+    },
+    "FR0017": {
+        "clientCode": "FR0017",
+        "comercial": "LES MARIÉES DE NR",
+        "name": "CAROLE DESARTHE",
+        "fiscal": "FR80389592213",
+        "email": "contactmarieesdenr@gmail.com",
+        "adress": "1 avenue des Mauges, 49110 LE PIN EN MAUGES, France"
+    },
+    "FR0029": {
+        "clientCode": "FR0029",
+        "comercial": "MARY MARIÉES",
+        "name": "SARL NSM",
+        "fiscal": "FR95448229203",
+        "email": "marymariees@gmail.com",
+        "adress": "14 RUE HUGUERIE, 33000 BORDEAUX, France"
+    },
+    "FR0032": {
+        "clientCode": "FR0032",
+        "comercial": "LM MARIAGE",
+        "name": "EURL LM",
+        "fiscal": "FR52750646218",
+        "email": "lm.hervemariage.rodez@gmail.com",
+        "adress": "45 AVENUE AMANS RODAT, 12000 RODEZ, France"
+    },
+    "FR0033": {
+        "clientCode": "FR0033",
+        "comercial": "COTÉ MARIAGE",
+        "name": "EURL LES MARIES DE CELYNE",
+        "fiscal": "FR32788628469",
+        "email": "cotemariage66@mariage-perpignan.com",
+        "adress": "10 RUE ALBERT EINSTEIN, 66330 CABESTANY, France"
+    },
+    "FR0034": {
+        "clientCode": "FR0034",
+        "comercial": "GRACE MARIAGE",
+        "name": "SASU GRACE",
+        "fiscal": "FR75818224800",
+        "email": "grace-mariage@live.fr",
+        "adress": "70 RUE MADIER DE MONTJAU, 26000 VALENCE, France"
+    },
+    "FR0036": {
+        "clientCode": "FR0036",
+        "comercial": "NOCIALINE",
+        "name": "GROUPE OPTIMAGE",
+        "fiscal": "FR72431961390",
+        "email": "contact@nocialine.com",
+        "adress": "8 BD EDOUARD REY, 38000 GRENOBLE, France"
+    },
+    "FR0037": {
+        "clientCode": "FR0037",
+        "comercial": "BOUTIQUE I GILLES",
+        "name": "SASU TDU",
+        "fiscal": "FR58809747447",
+        "email": "lamariee@igilles.com",
+        "adress": "56, avenue du Maréchal de Lattre de Tassigny, 13090 AIX EN PROVENCE, Francia"
+    },
+    "FR0041": {
+        "clientCode": "FR0041",
+        "comercial": "NICEA MARIAGE",
+        "name": "SARL NICEA MARIAGE",
+        "fiscal": "FR96495283871",
+        "email": "contact@nicea-mariage.com",
+        "adress": "20 AVENUE DE LA REPUBLIQUE, 06300 NICE, France"
+    },
+    "FR0094": {
+        "clientCode": "FR0094",
+        "comercial": "NOCE BLANCHE",
+        "name": "SARL NOCE BLANCHE",
+        "fiscal": "FR96440257905",
+        "email": "noce-blanche@orange.fr",
+        "adress": "45 rue Lafaurie de Monbadon, 33000 BORDEAUX, Francia"
+    },
+    "FR0114": {
+        "clientCode": "FR0114",
+        "comercial": "L'ELEGANCE MARIAGE",
+        "name": "SARL L'ELEGANCE MARIAGE",
+        "fiscal": "FR51891665432",
+        "email": "elegancemariage42@gmail.com",
+        "adress": "4 RUE DE LA REPUBLIQUE, 42000 SAINT ETIENNE, Francia"
+    },
+    "FR0119": {
+        "clientCode": "FR0119",
+        "comercial": "IL ETAIT UNE FOIS MARIEE",
+        "name": "SARL PAULA JACINTO",
+        "fiscal": "FR85532801495",
+        "email": "iletaitunefoisunemariee@orange.fr",
+        "adress": "871 AVENUE ROBERT LABESSAN, 47300 BIAS, Francia"
+    },
+    "FR0122": {
+        "clientCode": "FR0122",
+        "comercial": "DECLARATION",
+        "name": "SARL GARYLAN, DECLARATION (FR0122",
+        "fiscal": "FR32435038443",
+        "email": "paul.cherqui@orange.fr",
+        "adress": "88 RUE HOUDAN, 92330 SCEAUX, Francia"
+    },
+    "FR0124": {
+        "clientCode": "FR0124",
+        "comercial": "NOCES DE CRISTAL",
+        "name": "SARL NOCES DE CRISTAL",
+        "fiscal": "FR68752705210",
+        "email": "nocesdecristal@sfr.fr",
+        "adress": "24 RUE DES QUATRE EGLISES, 54000 NANCY, Francia"
+    },
+    "FR0126": {
+        "clientCode": "FR0126",
+        "comercial": "SARL BLANC POUDRE",
+        "name": "BLANC POUDRE",
+        "fiscal": "FR54813097276",
+        "email": "blanc.poudre@gmail.com",
+        "adress": "3 rue de maguelone, 34000 montpellier, France"
+    },
+    "FR0136": {
+        "clientCode": "FR0136",
+        "comercial": "GLORIA BIARRITZ",
+        "name": "GLORIA CREATION",
+        "fiscal": "FR87901855585",
+        "email": "gloria.creation@orange.fr",
+        "adress": "25 AV DU MARECHAL FOCH, 64200 BIARRITZ, Francia"
+    },
+    "FR0139": {
+        "clientCode": "FR0139",
+        "comercial": "MISS VENDOME SEDUCTION",
+        "name": "EURL MASSADA",
+        "fiscal": "FR84409942588",
+        "email": "vendomeseduction@orange.fr",
+        "adress": "2 RUE DU CHAPITRE, 30000 NIMES, France"
+    },
+    "FR0157": {
+        "clientCode": "FR0157",
+        "comercial": "MARIONS NOUS",
+        "name": "SARL MARIONS NOUS",
+        "fiscal": "FR06359800158",
+        "email": "marions-nous@wanadoo.fr",
+        "adress": "35 RUE DE LA TETE D'OR, 57000 METZ, France"
+    },
+    "FR0158": {
+        "clientCode": "FR0158",
+        "comercial": "MARINE JARRIGE",
+        "name": "EURL MARINE JARRIGE EURL",
+        "fiscal": "FR20839651726",
+        "email": "marine.jarrige@gmail.com",
+        "adress": "7 BOULEVARD MARECHAL LYAUTEY, 19100 BRIVE LA GAILLARDE, France"
+    },
+    "FR0186": {
+        "clientCode": "FR0186",
+        "comercial": "PERLE",
+        "name": "EURL PERLE",
+        "fiscal": "FR90841415177",
+        "email": "perle.dress971@gmail.com",
+        "adress": "11 GALERIES DE HOUELBOURG ZI DE JARRY BAIE MAHAULT, 97122 BAIE-MAHAULT, Guadeloupe"
+    },
+    "FR0194": {
+        "clientCode": "FR0194",
+        "comercial": "LE CACHET ROYAL",
+        "name": "SARL LE CACHET ROYAL",
+        "fiscal": "FR37754068567",
+        "email": "le.cachet.royal@orange.fr",
+        "adress": "1 AVENUE JEAN JANVIER, 35000 RENNES, France"
+    },
+    "FR0222": {
+        "clientCode": "FR0222",
+        "comercial": "OLIVIER SINIC",
+        "name": "SARL OLIVIER SINIC",
+        "fiscal": "FR69423831916",
+        "email": "olivier.sinic@wanadoo.fr",
+        "adress": "20 RUE DE LAMBERSART, 59237 Verlinghem, France"
+    },
+    "FR0240": {
+        "clientCode": "FR0240",
+        "comercial": "EURL LA MARIEE AU NATUREL",
+        "name": "EURL LA MARIEE AU NATUREL",
+        "fiscal": "FR60912340403",
+        "email": "MARJOLAINE@LAMARIEEAUNATUREL.COM",
+        "adress": "17 rue des Carmes, 45000 Orléans, France"
+    },
+    "FR0243": {
+        "clientCode": "FR0243",
+        "comercial": "L’ ATELIER DES NOCES CHALLANS",
+        "name": "SASU LATELIER NOPTIAE",
+        "fiscal": "FR65829145671",
+        "email": "commercial@latelierdesnoces.com",
+        "adress": "2 BIS AVENUE DU GENERAL DE GAULLE, 17440 AYTRE, France"
+    },
+    "FR0248": {
+        "clientCode": "FR0248",
+        "comercial": "L’ATELIER DE MARIE",
+        "name": "SARL MGL",
+        "fiscal": NaN,
+        "email": "contact@styliste-poitiers.fr",
+        "adress": "94 RUE DE LA CATHEDRALE, 86000 POITIERS, Francia"
+    },
+    "FR0262": {
+        "clientCode": "FR0262",
+        "comercial": "DECLARATION",
+        "name": "SARL GARYLAN, CONFIDENCE (FR0262",
+        "fiscal": "FR32435038443",
+        "email": "confidence-mariage@orange.fr",
+        "adress": "88 RUE HOUDAN, 92330 SCEAUX, Francia"
+    },
+    "FR0283": {
+        "clientCode": "FR0283",
+        "comercial": "MAGIE BLANCHE",
+        "name": "SARL SARL COEUR",
+        "fiscal": "FR05420890790",
+        "email": "PASCAL.MAGIEBLANCHE@FREE.FR",
+        "adress": "32 RUE VICTOR HUGO, 71000 MACON, Francia"
+    },
+    "FR0288": {
+        "clientCode": "FR0288",
+        "comercial": "O’SCARLETT",
+        "name": "SARL PERONNE",
+        "fiscal": "FR05380481366",
+        "email": "direction-annecy@oscarlett.com",
+        "adress": "24 RUE ROYALE, 74000 ANNECY, France"
+    },
+    "FR0292": {
+        "clientCode": "FR0292",
+        "comercial": "CEREMONIA",
+        "name": "SARL HL ELEGANCE",
+        "fiscal": "FR 90914075064",
+        "email": "ceremonia.hlelegance@gmail.com",
+        "adress": "22 COURS ARISTIDE BRIAND, 08000 CHARLEVILLE-MEZIERES, France"
+    },
+    "FR0293": {
+        "clientCode": "FR0293",
+        "comercial": "L’ADRESSE BLANCHE",
+        "name": "SAS EZKONTZA",
+        "fiscal": "FR87901855585",
+        "email": "MAGALI@LADRESSEBLANCHE.FR",
+        "adress": "72 RUE PIERRE PAUL RIQUET, 31000 TOULOUSE, Francia"
+    },
+    "FR0334": {
+        "clientCode": "FR0334",
+        "comercial": "PROMISSA",
+        "name": "SARL PROMISSA",
+        "fiscal": "FR44513584003",
+        "email": "duohewu93@gmail.com",
+        "adress": "31 rue du faubourg saint martin, 75010 paris, France"
+    },
+    "FR0337": {
+        "clientCode": "FR0337",
+        "comercial": "LADY BRIDE",
+        "name": "SARL LADY BRIDE",
+        "fiscal": "FR13914362223",
+        "email": "ladybride.lyon@gmail.com",
+        "adress": "4 rue Paul Chevenard, 69001 Lyon, France"
+    },
+    "FR0338": {
+        "clientCode": "FR0338",
+        "comercial": "PORTE BONHEUR",
+        "name": "SARL STYLICE",
+        "fiscal": "FR17517524328",
+        "email": "info@portebonheur.eu",
+        "adress": "33 ROUTE DE BISCHWILLER, 67800 BISCHHEIM, France"
+    },
+    "FR0340": {
+        "clientCode": "FR0340",
+        "comercial": "NICOLE COUTURE",
+        "name": "SARL DATA",
+        "fiscal": "FR11841118557",
+        "email": "contact@nicolecouture.com",
+        "adress": "4 RUE MARÉCHAL FOCH, 56400 AURAY, France"
+    },
+    "FR0353": {
+        "clientCode": "FR0353",
+        "comercial": "L’AVENUE DES MARIEES",
+        "name": "SARL IM MARIAGE",
+        "fiscal": "FR06979072311",
+        "email": "robe.mariee.lyon@gmail.com",
+        "adress": "47 RUE AUGUSTE COMTE, 69002 LYON, Francia"
+    },
+    "FR0354": {
+        "clientCode": "FR0354",
+        "comercial": "SARL BLANC POUDRE",
+        "name": "BLANC POUDRE, BLANC POUDRE MONTPELLIER",
+        "fiscal": "FR54813097276",
+        "email": "maisonblancpoudre@gmail.com",
+        "adress": "3 rue de maguelone, 34000 montpellier, France"
+    },
+    "FR0358": {
+        "clientCode": "FR0358",
+        "comercial": "COROL EVENEMENTS - NUPTIADE",
+        "name": "TANJON PENNEROUX ELIETTE",
+        "fiscal": "FR26408466746",
+        "email": "nuptiadebridal@gmail.com",
+        "adress": "1 RUE ANTOINE FONTAINE, 97430 LE TAMPOM-LA RÉUNION, Francia"
+    },
+    "FR0360": {
+        "clientCode": "FR0360",
+        "comercial": "MADESSA B",
+        "name": "SARL MDS",
+        "fiscal": "FR81888212339",
+        "email": "mariagedessacres@gmail.com",
+        "adress": "2 Rue Bertin, 51100 Reims, Reims, Francia"
+    },
+    "FR0375": {
+        "clientCode": "FR0375",
+        "comercial": "ATELIER ELINAM",
+        "name": "DELA COUTURE",
+        "fiscal": "FR52943719674",
+        "email": "delacouture77@gmail.com",
+        "adress": "15 AVENUE DE SARIA, 77700 SERRIS, Francia"
+    },
+    "FR0386": {
+        "clientCode": "FR0386",
+        "comercial": "PROMARRIED",
+        "name": "PROMARRIED (SAS PROMARRIED",
+        "fiscal": "FR77852830553",
+        "email": "promarried@gmail.com",
+        "adress": "1 RUE HIRRONDELLES, SAINT GENEVIERS DES BOIS, Francia"
+    },
+    "FR0397": {
+        "clientCode": "FR0397",
+        "comercial": "NOCE BLANCHE",
+        "name": "SARL GROUPE MARIAGES",
+        "fiscal": "FR83502230360",
+        "email": "noceblanche33@orange.fr",
+        "adress": "45 rue Lafaurie de Monbadon, 33000 BORDEAUX, Francia"
+    },
+    "GR0052": {
+        "clientCode": "GR0052",
+        "comercial": "PRIMALICIA",
+        "name": "BRIDAL DESIGNERS SMPC",
+        "fiscal": "EL801227810",
+        "email": "vasiliki@primalicia.com",
+        "adress": "55 ARCH. MAKARIOU C´AVE, 1070 NICOSIA, Chipre"
+    },
+    "GT0364": {
+        "clientCode": "GT0364",
+        "comercial": "BIANCO NOVIA GUATEMALA",
+        "name": "WHITE YOUNG BRIDES SA",
+        "fiscal": "Nit 77286472",
+        "email": "mireya_rivas@yahoo.com",
+        "adress": "Plaza Fontabella 4 ave 12-59 zona 10, 01010 Guatemala, Guatemala"
+    },
+    "HK0402": {
+        "clientCode": "HK0402",
+        "comercial": "DESIGNER BRIDAL ROOM",
+        "name": "DESIGNER BRIDAL ROOM LIMITED",
+        "fiscal": "HK64901373000",
+        "email": "sales@designerbridalroom.com.hk",
+        "adress": "7f, 18 Wing Lok Street, Sheung Wan, Hong Kong, 00000 Sheung Wan, Hong Kong SAR, China"
+    },
+    "HR0189": {
+        "clientCode": "HR0189",
+        "comercial": "ALIGER ARS D.O.O",
+        "name": "ALIGER ARS D.O.O. ZA TRGOVINU,MARKETING I USLUGE",
+        "fiscal": "HR73961521191",
+        "email": "snjezana@leiloubyalex.com",
+        "adress": "ILICA 15, 10000 ZAGREB, Croacia"
+    },
+    "IE0231": {
+        "clientCode": "IE0231",
+        "comercial": "AIBHEIL OF ADARE",
+        "name": "ANN GILVARRY",
+        "fiscal": "IE3865084L",
+        "email": "INFO@AIBHEIL.COM",
+        "adress": "RATHKEALE ROAD, AIBHEIL, V94XF68 ADARE, Limerick, Ireland"
+    },
+    "IE0258": {
+        "clientCode": "IE0258",
+        "comercial": "THE WHITE ROOM",
+        "name": "THE WHITE ROOM BRIDAL LIMITED",
+        "fiscal": "IE9812660B",
+        "email": "accounts@thewhiteroom.ie",
+        "adress": "23D Lough Sheever Corporate Park The White Room Mullingar, N91 VW66 Robinstown, Mullingar, Co.Westmeath, Westmeath, Ireland"
+    },
+    "IE0260": {
+        "clientCode": "IE0260",
+        "comercial": "FRILLY FROCKS",
+        "name": "FRILLY FROCKS LIMITED",
+        "fiscal": "IE3435551TH",
+        "email": "info@frillyfrocks.ie",
+        "adress": "The Old Court House, Fitzwilliam Court, 11-12 Dyer St,, A92 VX32 Drogheda, Louth, Irlanda"
+    },
+    "IE0285": {
+        "clientCode": "IE0285",
+        "comercial": "SAY I DO",
+        "name": "SAY I DO",
+        "fiscal": "IE6657197P",
+        "email": "INFO@SAYIDO.IE",
+        "adress": "UNIT 5, DISTILLERY LANES, P25 HN28 MIDLETON, Cork, Irlanda"
+    },
+    "IE0393": {
+        "clientCode": "IE0393",
+        "comercial": "LOVE ELLIE BRIDAL",
+        "name": "LOVE ELLIE BRIDAL LTD",
+        "fiscal": "IE3911873VH",
+        "email": "info@loveelliebridal.com",
+        "adress": "MAIN ST., A82 Y9Y9 VIRGINIA, Cavan, Irlanda"
+    },
+    "IT0001": {
+        "clientCode": "IT0001",
+        "comercial": "DESIO SPOSA",
+        "name": "DESIO DI GIORGIANNI ANTONIA",
+        "fiscal": "IT02830490831",
+        "email": "info@desiosposa.it",
+        "adress": "VIA MARCONI 1571, 98051 BARCELLONA PG, Italia"
+    },
+    "IT0003": {
+        "clientCode": "IT0003",
+        "comercial": "D'AVINO SPOSE",
+        "name": "D'AVINO SPOSE SRL",
+        "fiscal": "IT04133811002",
+        "email": "maria@davino.it",
+        "adress": "VIA MURA DEI FRANCESI 138, 00043 CIAMPINO, Roma, Italia"
+    },
+    "IT0005": {
+        "clientCode": "IT0005",
+        "comercial": "SPOSA IN",
+        "name": "MORABITO OLIVIA ANTONIA",
+        "fiscal": "IT01126600806",
+        "email": "info@sposain.it",
+        "adress": "VIA ASCHEWEZ 145, 89125 REGGIO DE CALABRIA, Italia"
+    },
+    "IT0006": {
+        "clientCode": "IT0006",
+        "comercial": "DI PUNTO IN BIANCO",
+        "name": "DI PUNTO IN BIANCO SNC DI ANNALISA MASINI E C.",
+        "fiscal": "IT04029410406",
+        "email": "info@dipuntoinbiancocesena.com",
+        "adress": "VIA FRATELLI ROSELLI 7, 47521 CESENA, Forlì-Cesena, Italia"
+    },
+    "IT0007": {
+        "clientCode": "IT0007",
+        "comercial": "VALENTI SPOSA ATELIER",
+        "name": "WHITE FASHION SRLS",
+        "fiscal": "IT02023230895",
+        "email": "valentisposaatelier@gmail.com",
+        "adress": "CORSO UMBERTO I, 101, 96100 SIRACUSA, Siracusa, Italia"
+    },
+    "IT0008": {
+        "clientCode": "IT0008",
+        "comercial": "ATELIER MERINDA SPOSE",
+        "name": "MERINDA SPOSE DI LATTANZI MERINDA",
+        "fiscal": "IT01782490567",
+        "email": "info@merindaspose.it",
+        "adress": "VIA CASSIA 269, 01019 VETRALIA, Viterbo, Italia"
+    },
+    "IT0011": {
+        "clientCode": "IT0011",
+        "comercial": "GRIFFE SPOSE ATELIER",
+        "name": "LE SPOSE DE GRIFFE S.N.C",
+        "fiscal": "IT05360000722",
+        "email": "info@lesposedigriffe.it",
+        "adress": "VIA ARGIRO 94, 70124 BARI, Italia"
+    },
+    "IT0013": {
+        "clientCode": "IT0013",
+        "comercial": "POLISANO SPOSE",
+        "name": "POLISANO SPOSE S.R.L.",
+        "fiscal": "IT04751710874",
+        "email": "alfiopolisano@gmail.com",
+        "adress": "CORSO ITALIA 200, 95014 GIARRE, Italia"
+    },
+    "IT0015": {
+        "clientCode": "IT0015",
+        "comercial": "DEMAS",
+        "name": "DEMAS COLLEZIONI S.R.L.",
+        "fiscal": "IT07008080967",
+        "email": "donna@demas.net",
+        "adress": "VIA B. CROCE 13, 20090 CESANO BOSCONE, Milano, Italia"
+    },
+    "IT0022": {
+        "clientCode": "IT0022",
+        "comercial": "COLET SPOSI",
+        "name": "COLET SPOSI S.R.L.",
+        "fiscal": "IT05110200820",
+        "email": "info@coletsposi.it",
+        "adress": "VIALE STRASBURGO 81, 90145 PALERMO, Palermo, Italia"
+    },
+    "IT0023": {
+        "clientCode": "IT0023",
+        "comercial": "ATELIER DELÍ SPOSA",
+        "name": "ATELIER DELI DI DESIMONE ISABELLA & C. SAS",
+        "fiscal": "IT07509250721",
+        "email": "atelierdelimonopoli@gmail.com",
+        "adress": "VIA MARSALA 96, 70043 MONOPOLI, Italia"
+    },
+    "IT0024": {
+        "clientCode": "IT0024",
+        "comercial": "ATELIER BOCCIA DI ANDREA & FIORELLA",
+        "name": "F.G. COUTURE S.R.L.",
+        "fiscal": NaN,
+        "email": "fgcouture.sposi@gmail.com",
+        "adress": "VIA PLINIO 141, 80045 POMPEI, Italia"
+    },
+    "IT0045": {
+        "clientCode": "IT0045",
+        "comercial": "LIABELLA",
+        "name": "LIABELLA SRL",
+        "fiscal": "IT03251251215",
+        "email": "info@liabella.it",
+        "adress": "CORSO ITALIA 65, 80063 PIANO DI SORRENTO, Napoli, Italia"
+    },
+    "IT0050": {
+        "clientCode": "IT0050",
+        "comercial": "SPOSAMI ATELIER",
+        "name": "SPOSAMI SRL",
+        "fiscal": "IT12987391005",
+        "email": "info@sposamiatelier.com",
+        "adress": "Via Maremmana III , 43, 00030 San Cesareo, Roma, Italy"
+    },
+    "IT0051": {
+        "clientCode": "IT0051",
+        "comercial": "THE WOMAN IN WHITE",
+        "name": "THE WOMAN IN WHITE SRL",
+        "fiscal": "IT13020791003",
+        "email": "info@thewomaninwhite.it",
+        "adress": "VIA TAGLIAMENTO 14, 00198 ROMA, Roma, Italia"
+    },
+    "IT0054": {
+        "clientCode": "IT0054",
+        "comercial": "CLARA COUTURE",
+        "name": "LORETTA ITALIA SRL",
+        "fiscal": "IT03691750164",
+        "email": "clara@clara.it",
+        "adress": "VIA BEDESCO 39, 24039 SOTTO IL MONTE, Bergamo, Italia"
+    },
+    "IT0055": {
+        "clientCode": "IT0055",
+        "comercial": "MATTIOLI SPOSI FANO",
+        "name": "EMME RETAIL SRL",
+        "fiscal": "IT02278320417",
+        "email": "emme.retail.fano@gmail.com",
+        "adress": "VIA ROMA 205, 61032 FANO, Pesaro e Urbino, Italia"
+    },
+    "IT0056": {
+        "clientCode": "IT0056",
+        "comercial": "DONNE DI MODA",
+        "name": "DONNE DI MODA DI DODICI GIANNA",
+        "fiscal": "IT01669920330",
+        "email": "donnedimoda@virgilio.it",
+        "adress": "VIA MORIGI 39, 29121 PIACENZA, Piacenza, Italia"
+    },
+    "IT0057": {
+        "clientCode": "IT0057",
+        "comercial": "GARIBALDI",
+        "name": "GARIBALDI CONFEZIONI SRL SOCIO UNICO",
+        "fiscal": "IT02010160139",
+        "email": "info@garibaldiconfezioni.com",
+        "adress": "Via Alserio,4, 22036 ERBA, Como, Italia"
+    },
+    "IT0061": {
+        "clientCode": "IT0061",
+        "comercial": "SAMUELA SPOSE",
+        "name": "SAMUELA SPOSE SNC DI TROVATO CLARA E C.",
+        "fiscal": "IT05622060019",
+        "email": "info@samuelaspose.it",
+        "adress": "VIA DRUENTO 148, 10078 VENARIA, Italia"
+    },
+    "IT0062": {
+        "clientCode": "IT0062",
+        "comercial": "MATTIOLI SPOSI ANCONA",
+        "name": "EMME RETAIL SRL",
+        "fiscal": NaN,
+        "email": "emme.retailancona@gmail.com",
+        "adress": "VIA MARTIRI DELLA RESISTENZA 40, 60125 ANCONA, Italia"
+    },
+    "IT0068": {
+        "clientCode": "IT0068",
+        "comercial": "LA SPOSA ATELIER ALTA MODA",
+        "name": "ATELIER LA SPOSA SRL",
+        "fiscal": "IT05841500654",
+        "email": "atelierlasposa.novellino@hotmail.it",
+        "adress": "VIA TRINITA 95, 84036 SALA CONSILINA, Italia"
+    },
+    "IT0069": {
+        "clientCode": "IT0069",
+        "comercial": "LA VENERE DI BERENICE",
+        "name": "LA VENERE S.R.L.S.",
+        "fiscal": "IT08126181216",
+        "email": "lavenerediberenice@gmail.com",
+        "adress": "VIA EPOMEO 251-253, 080126 NAPOLI, Italia"
+    },
+    "IT0070": {
+        "clientCode": "IT0070",
+        "comercial": "LA VENERE DI BERENICE DUOMO",
+        "name": "B&B SAS DI BRUNETTI FRANCESCO",
+        "fiscal": "IT07644470630",
+        "email": "amministrazionebebsas@gmail.com",
+        "adress": "VIA NAZIONALE TORRETTE 238, 83100 MERCOGLIANO, Avellino, Italia"
+    },
+    "IT0071": {
+        "clientCode": "IT0071",
+        "comercial": "LA VENERE DI BERENICE DUOMO",
+        "name": "B&B SAS DI BRUNETTI FRANCESCO",
+        "fiscal": "IT07644470630",
+        "email": "amministrazionebebsas@gmail.com",
+        "adress": "VIA NAZIONALE TORRETTE 238, 83100 MERCOGLIANO, Avellino, Italia"
+    },
+    "IT0077": {
+        "clientCode": "IT0077",
+        "comercial": "TEMPTATION GALLERY",
+        "name": "TG FASHION SRL",
+        "fiscal": "IT02577310804",
+        "email": "albertoventrice@temptation.it",
+        "adress": "STRADA STATALE 18 KM 485, 89015 PALMI, Reggio Calabria, Italia"
+    },
+    "IT0078": {
+        "clientCode": "IT0078",
+        "comercial": "LE SPOSE DI DAVIDA MESSINA",
+        "name": "LE SPOSE DI DAVIDA DI ANTONIA PIA NUCERA",
+        "fiscal": "IT02711600805",
+        "email": "lesposedidavida@libero.it",
+        "adress": "Via Giordano Bruno 97, 98123 Messina, Italia"
+    },
+    "IT0082": {
+        "clientCode": "IT0082",
+        "comercial": "ULTIMO BOUTIQUE",
+        "name": "CRIZIA DI GIARRIZZO CATERINA S.A.S",
+        "fiscal": "IT01008010082",
+        "email": "info@ultimoboutique.it",
+        "adress": "Via vitt.emanuele 111, 18012 bordighera, Imperia, Italia"
+    },
+    "IT0087": {
+        "clientCode": "IT0087",
+        "comercial": "MODA SPOSI ATELIER",
+        "name": "MODA SPOSI SRL",
+        "fiscal": "IT02199840543",
+        "email": "info@modasposiatelier.it",
+        "adress": "STR. TIBERINA SUD 7, 06135 BALANZANO PG, Perugia, Italia"
+    },
+    "IT0088": {
+        "clientCode": "IT0088",
+        "comercial": "LE SPOSE DI GIULIO GAUDIOSI",
+        "name": "FAB LUX SRL",
+        "fiscal": "IT05844720655",
+        "email": "lesposedigiuliogaudiosi@gmail.com",
+        "adress": "VIA SERRONI 1, 84024 CONTURSI TERME, Salerno, Italia"
+    },
+    "IT0090": {
+        "clientCode": "IT0090",
+        "comercial": "ERRICO MARIA ALTA MODA SPOSA",
+        "name": "OFFICINA CALIMALA SRL",
+        "fiscal": "IT02544830744",
+        "email": "erricomaria@erricomaria.it",
+        "adress": "VIA DE ROSSI 39, 70123 BARI, Bari, Italia"
+    },
+    "IT0097": {
+        "clientCode": "IT0097",
+        "comercial": "TERESA VALENTE SPOSI",
+        "name": "VALENTE TERESA",
+        "fiscal": "IT00849310727",
+        "email": "teresa_valente@virgilio.it",
+        "adress": "VIA ALDO MORO 92, 76011 BISCEGLIE, Italia"
+    },
+    "IT0098": {
+        "clientCode": "IT0098",
+        "comercial": "ATELIER DIVA SPOSA",
+        "name": "ATELIER DIVA SPOSA SRLS",
+        "fiscal": "IT05540190658",
+        "email": "info@atelierdivasposa.it",
+        "adress": "VIA GIOVANNI RUGGI D'ARAGONA 26, 84121 SALERNO, Salerno, Italie"
+    },
+    "IT0103": {
+        "clientCode": "IT0103",
+        "comercial": "L'ATELIER DEI SOGNI SIGNA",
+        "name": "L'ATELIER DEI SOGNI SRL",
+        "fiscal": "IT07049940484",
+        "email": "info@latelierdeisogni.it",
+        "adress": "Via Livornese Est, 125, 56035 Perignano Casciana Terme Lari, Italia"
+    },
+    "IT0104": {
+        "clientCode": "IT0104",
+        "comercial": "NON SOLO BIANCO",
+        "name": "NON SOLO BIANCO DI BASTIANI ANNA E COMMERCIALE C.SNC",
+        "fiscal": "IT01439130533",
+        "email": "info@nonsolobianco.it",
+        "adress": "VIA DEL FONDITORE 4, 58022 FOLLONICA, Grosseto, Italia"
+    },
+    "IT0107": {
+        "clientCode": "IT0107",
+        "comercial": "LINEA SPOSI CONFITAL",
+        "name": "LINEA SPOSI CONFITAL SNC DI GALLERA FRANCESCA & C",
+        "fiscal": "IT01306320191",
+        "email": "info@lineasposiconfital.it",
+        "adress": "Via Solferino, 4, 26012 Castelleone, Italia"
+    },
+    "IT0108": {
+        "clientCode": "IT0108",
+        "comercial": "EMOZIONI SPOSA",
+        "name": "EMOZIONI SPOSA DI LUCILLA CAGGIULA SRL",
+        "fiscal": "IT04877710758",
+        "email": "info@emozionisposa.it",
+        "adress": "VIA RACALE 47, 73040 MELISSANO, Lecce, Italia"
+    },
+    "IT0112": {
+        "clientCode": "IT0112",
+        "comercial": "MARCOS SPOSA",
+        "name": "MARCOS SPA",
+        "fiscal": "IT03240060040",
+        "email": "marini@marcos.it",
+        "adress": "VIA ROSA BIANCA 36, 12084 MONDOVI, Italia"
+    },
+    "IT0115": {
+        "clientCode": "IT0115",
+        "comercial": "CASA DELLA SPOSA",
+        "name": "CASA DELLA SPOSA DI PEDRIERI PAOLA",
+        "fiscal": "IT01256950351",
+        "email": "info@casasposa.it",
+        "adress": "VIA PROVINCIALE 24/2, 42030 VIANO, Reggio Emilia, Italia"
+    },
+    "IT0118": {
+        "clientCode": "IT0118",
+        "comercial": "IL CORTILE",
+        "name": "IL CORTILE SRL",
+        "fiscal": "IT01628070128",
+        "email": "cortile.lucini@libero.it",
+        "adress": "PIAZZA INDIPENDENZA 10, 21047 SARONNO, Italia"
+    },
+    "IT0129": {
+        "clientCode": "IT0129",
+        "comercial": "AMBROSIO SPOSI",
+        "name": "AMBROSIO OLBIA FLY SHOP SRL",
+        "fiscal": "IT02521110904",
+        "email": "ambrosiosposi@ambrosiolacorte.it",
+        "adress": "VIA SENEGAL 1 ZONA INDUSTRIALE SETT.5, 07026 OLBIA, Sassari, Italia"
+    },
+    "IT0145": {
+        "clientCode": "IT0145",
+        "comercial": "LE SPOSE DI DONNALUNA",
+        "name": "LE SPOSE ATELIER SAS",
+        "fiscal": "IT01549450698",
+        "email": "info@lesposedidonnaluna.it",
+        "adress": "Piazzale Histonium, 13, 66054 Vasto, Chieti, Italia"
+    },
+    "IT0149": {
+        "clientCode": "IT0149",
+        "comercial": "FIORI D’ARANCIO ATELIER",
+        "name": "FIORI D’ARANCIO ATELIER SRL",
+        "fiscal": "IT02897700791",
+        "email": "fioridarancioatelier@alice.it",
+        "adress": "Via del progresso, 172, 88046 Lamezia Terme, Italia"
+    },
+    "IT0154": {
+        "clientCode": "IT0154",
+        "comercial": "SARTORIA ROSITA ATELIER",
+        "name": "GIROMODA BY SARTORIA ROSITA DI CARLOMAGNO ROSELLA",
+        "fiscal": "IT01283870762",
+        "email": "carlomagno.gina@live.it",
+        "adress": "VIA PROVINCIALE MELARA 1-3, 85044 LAURIA, Italia"
+    },
+    "IT0159": {
+        "clientCode": "IT0159",
+        "comercial": "L'ATELIER DEI SOGNI SIGNA",
+        "name": "L'ATELIER DEI SOGNI SRL, PERIGNANO",
+        "fiscal": "IT07049940484",
+        "email": "info@latelierdeisogni.it",
+        "adress": "Via Livornese Est, 125, 56035 Perignano Casciana Terme Lari, Italia"
+    },
+    "IT0160": {
+        "clientCode": "IT0160",
+        "comercial": "PALMINA SPOSE ATELIER",
+        "name": "PALMINA SPOSE DI DI MASCIO DANIELA & C. Snc",
+        "fiscal": "IT01557370606",
+        "email": "info@palminaspose.it",
+        "adress": "Via gaetano di biasio, 152, 03043 Cassino, Frosinone, Italia"
+    },
+    "IT0161": {
+        "clientCode": "IT0161",
+        "comercial": "FAUSTO SARI ATELIER",
+        "name": "FAUSTO SARI SRL",
+        "fiscal": "IT03112680263",
+        "email": "ivan@faustosari.com",
+        "adress": "Via postumia , 103, 31047 Ponte di Piave, Treviso, Italia"
+    },
+    "IT0165": {
+        "clientCode": "IT0165",
+        "comercial": "GALLARATE SPOSA",
+        "name": "GALLARATE SPOSA CONFEZIONI GRANDINMARCHE SRL",
+        "fiscal": "IT06108100964",
+        "email": "info@gallaratesposa.com",
+        "adress": "PIAZZA FRANCESCO BUFFONI 5, 21013 GALLARATE, Varese, Italia"
+    },
+    "IT0167": {
+        "clientCode": "IT0167",
+        "comercial": "ATELIER SHAULA",
+        "name": "ATELIER SHAULA SRL",
+        "fiscal": "IT10022971211",
+        "email": "info.shaula@virgilio.it",
+        "adress": "Via Guglielmo Marconi, 8, 80059 Torre del Grego, Italia"
+    },
+    "IT0168": {
+        "clientCode": "IT0168",
+        "comercial": "STEFANIA SPOSE PARMA",
+        "name": "STEFANIA SPOSE SRL SOC. UNIPERSONALE",
+        "fiscal": "IT02806660342",
+        "email": "info@stefaniasposeparma.it",
+        "adress": "VIA GIOSUE CARDUCCI, 14, 43121 PARMA, Parma, Italia"
+    },
+    "IT0174": {
+        "clientCode": "IT0174",
+        "comercial": "ATELIER ALINE",
+        "name": "ALINE DI RIOTTO CATERINA & C. SAS",
+        "fiscal": "IT00510300528",
+        "email": "aline@hotmail.it",
+        "adress": "Largo Campidoglio, 7, 53036 Poggibonsi, Siena, Italia"
+    },
+    "IT0175": {
+        "clientCode": "IT0175",
+        "comercial": "LORIS MODE SPOSI",
+        "name": "LORIS SPOSI S.R.L.",
+        "fiscal": "IT04918380231",
+        "email": "info@lorismodesposi.it",
+        "adress": "Via Dall’Oca Bianca, 1, 37012 BUSSOLENGO, Verona, Italia"
+    },
+    "IT0177": {
+        "clientCode": "IT0177",
+        "comercial": "PERFECT PLANS WEDDING SHOP",
+        "name": "PERFECT PLANS WEDDINGSHOP DI MESSNER EVELYN and C. SAS",
+        "fiscal": "IT02767160217",
+        "email": "info@perfectplans.it",
+        "adress": "ANDREAS-HOFER-STRASSE 1/2, 39010 NALLES, Bolzano, Italia"
+    },
+    "IT0181": {
+        "clientCode": "IT0181",
+        "comercial": "LE SPOSE DI MONZA",
+        "name": "LE NUOVE SPOSE DI MONZA SRL",
+        "fiscal": "IT12514360960",
+        "email": "info@lesposedimonza.net",
+        "adress": "VIA A. STOPPANI 31, 20831 SEREGNO, Monza e Brianza, Italia"
+    },
+    "IT0183": {
+        "clientCode": "IT0183",
+        "comercial": "GRUPPO COLLU",
+        "name": "GRUPPO FRATELLI COLLU SRL",
+        "fiscal": "IT02421460920",
+        "email": "carla@gruppocollu.it",
+        "adress": "VIA AMSICORA 18, 09032 ASSEMINI, Cagliari, Italia"
+    },
+    "IT0184": {
+        "clientCode": "IT0184",
+        "comercial": "FABIANA SPOSE",
+        "name": "FABIANA SPOSE SRL",
+        "fiscal": "IT03337490738",
+        "email": "info@fabianaspose.it",
+        "adress": "VIA PUPINO 21, 74123 TARANTO, Taranto, Italia"
+    },
+    "IT0197": {
+        "clientCode": "IT0197",
+        "comercial": "MATTIOLI SPOSI RIMINI",
+        "name": "EMME RETAIL SRL",
+        "fiscal": NaN,
+        "email": "emme.retail.rimini@gmail.com",
+        "adress": "Via Flaminia, 389, 47924 RIMINI, Italia"
+    },
+    "IT0213": {
+        "clientCode": "IT0213",
+        "comercial": "MARIAGES ATELIER SPOSI",
+        "name": "MARIAGES SNC DI GUIOTTO GIANLUCA",
+        "fiscal": "IT00652210246",
+        "email": "monica@mariages.it",
+        "adress": "VIALE TRIESTE 1, 36075 ALTE CECCATO MONTECCHIO MAGGIORE, Vicenza, Italia"
+    },
+    "IT0217": {
+        "clientCode": "IT0217",
+        "comercial": "SPOSI DOMANI",
+        "name": "BARO.CCO DI BAROSI GIANLUCA & C. - S.A.S.",
+        "fiscal": "IT01535940207",
+        "email": "barosimoda@live.it; ngandolfi65@gmail.com",
+        "adress": "VIA L. PIRANDELLO 16, 46034 BORGO VIRGILIO, Mantova, Italia"
+    },
+    "IT0218": {
+        "clientCode": "IT0218",
+        "comercial": "SERRESE",
+        "name": "SERRESE DI STEFANIA LO MUZIO",
+        "fiscal": "IT03813960717",
+        "email": "INFO@SERRESE.IT",
+        "adress": "CORSO GIUSEPPE GARIBALDI 40, 71121 FOGGIA, Foggia, Italia"
+    },
+    "IT0220": {
+        "clientCode": "IT0220",
+        "comercial": "D'AVANZO ALTA MODA",
+        "name": "D'AVANZO ANTONIA",
+        "fiscal": "IT06706160725",
+        "email": "INFO@DAVANZOALTAMODA.IT",
+        "adress": "VIALO ALTO ADIGE 144, 76123 ANDRIA, Barletta-Andria-Trani, Italia"
+    },
+    "IT0225": {
+        "clientCode": "IT0225",
+        "comercial": "ATELIER BELLANTUONO",
+        "name": "NOVEL ITALIA S.R.L.",
+        "fiscal": "IT03758130714",
+        "email": "paola@bellantuono.it",
+        "adress": "LARGO SANITÁ 6, 71016 SAN SEVERO, Foggia, Italia"
+    },
+    "IT0228": {
+        "clientCode": "IT0228",
+        "comercial": "MIRA MODE",
+        "name": "MIRA MODE S.R.L.",
+        "fiscal": "IT02072510304",
+        "email": "INFO@MIRAMODE.IT",
+        "adress": "VIA ROMA 80, 33019 TRICESIMO, Udine, Italia"
+    },
+    "IT0229": {
+        "clientCode": "IT0229",
+        "comercial": "MIKELA C CREAZIONI",
+        "name": "MIKELA C. CREAZIONI S.R.L.",
+        "fiscal": "IT04999270657",
+        "email": "MIKELACREAZIONI@GMAIL.COM",
+        "adress": "VIA DEI GOTI 390, 84012 ANGRI, Salerno, Italia"
+    },
+    "IT0250": {
+        "clientCode": "IT0250",
+        "comercial": "ATELIER SPOSABELLA",
+        "name": "SPOSABELLA DI COLAVECCHIA MARIANNA",
+        "fiscal": "IT01631090709",
+        "email": "sposabellacb@gmail.com",
+        "adress": "VIA SAN GIOVANNI, 15/B, 86100 CAMPOBASSO, Campobasso, Italia"
+    },
+    "IT0253": {
+        "clientCode": "IT0253",
+        "comercial": "LE SPOSE DI NINFA",
+        "name": "LE SPOSE DI NINFA SRL",
+        "fiscal": "IT02812080816",
+        "email": "lesposedininfasnc@libero.it",
+        "adress": "LUNGOMARE MAZZINI, 31/32, 91026 MAZARA DEL VALLO, Trapani, Italia"
+    },
+    "IT0254": {
+        "clientCode": "IT0254",
+        "comercial": "FRANCESCO ARENA ATELIER",
+        "name": "FRANCESCO ARENA SRL",
+        "fiscal": "IT03799750611",
+        "email": "amministrazione@atelierfrancescoarena.it",
+        "adress": "CORSO UMBERTO I, 58, 81030 GRICIGNANO DI AVERSA, Caserta, Italia"
+    },
+    "IT0255": {
+        "clientCode": "IT0255",
+        "comercial": "CRISTINA FILIPPO SPADA ATELIER",
+        "name": "FILIPPO SPADA SRL",
+        "fiscal": "IT02384700817",
+        "email": "infocristinaspada@gmail.com",
+        "adress": "VIA G. B. PARVELLA, 49, 91100 TRAPANI, Trapani, Italia"
+    },
+    "IT0256": {
+        "clientCode": "IT0256",
+        "comercial": "BLANC ATELIER SPOSA",
+        "name": "MARTINA IMBERGAMO",
+        "fiscal": "IT02609420845",
+        "email": "martinaimbergamo@hotmail.it",
+        "adress": "VIALE ALDO MORO, 303, 92026 FAVARA, Agrigento, Italia"
+    },
+    "IT0267": {
+        "clientCode": "IT0267",
+        "comercial": "ISABELLA SPOSA",
+        "name": "ISABELLA SPOSA DI CIAMPÀ FRANCESCA",
+        "fiscal": "IT03622240798",
+        "email": "atelierisabellasposa@libero.it",
+        "adress": "VIA CUTRO, 20, 88900 CROTONE, Crotone, Italia"
+    },
+    "IT0268": {
+        "clientCode": "IT0268",
+        "comercial": "MONDO SPOSA",
+        "name": "MONDO SPOSA DI MEDDIS CATERINA",
+        "fiscal": "IT01730460795",
+        "email": "amministrazione@mondosposa.org",
+        "adress": "ZONA INDUSTRIALE LOC. AEROPORTO, 89900 VIBO VALENTIA, Vibo Valentia, Italia"
+    },
+    "IT0269": {
+        "clientCode": "IT0269",
+        "comercial": "L'ATELIER DEI SOGNI SIGNA",
+        "name": "L'ATELIER DEI SOGNI SRL, FORTE DEI MARMI",
+        "fiscal": "IT07049940484",
+        "email": "info@latelierdeisogni.it",
+        "adress": "Via Livornese Est, 125, 56035 Perignano Casciana Terme Lari, Italia"
+    },
+    "IT0279": {
+        "clientCode": "IT0279",
+        "comercial": "LE SPOSE DI LETIZIA",
+        "name": "LE SPOSE DI MARIA LETIZIA GRISAFI",
+        "fiscal": "IT01994290037",
+        "email": "info@lesposediletizia.it",
+        "adress": "PIAZZA III MARTIRI, 4, 28010 NEBBIUNO, Novara, Italia"
+    },
+    "IT0290": {
+        "clientCode": "IT0290",
+        "comercial": "ATELIER CENTRO SPOSI NOMENTANA",
+        "name": "ATELIER CENTRO SPOSI NOMENTANA S.R.L.S.",
+        "fiscal": "IT13786681000",
+        "email": "centro.sposinomentana@hotmail.com",
+        "adress": "VIA DELLE MOLETTE, 20/20A, 00013 MENTANA, Roma, Italia"
+    },
+    "IT0295": {
+        "clientCode": "IT0295",
+        "comercial": "GALLERIA DELLA SPOSA ATELIER",
+        "name": "DIACO ANTONELLA",
+        "fiscal": "IT03868320783",
+        "email": "info@galleriadellasposa.it",
+        "adress": "VIA MICHELE BIANCHI 20/C, 87064 CORIGLIANO-ROSSANO, Italia"
+    },
+    "IT0299": {
+        "clientCode": "IT0299",
+        "comercial": "BILOTTI ATELIER",
+        "name": "ATELIER PRIMA DONNA S.R.L.",
+        "fiscal": "IT05563270650",
+        "email": "bilottigianfranco@virgilio.it",
+        "adress": "Via Piave 38, 84043 Agropoli, Salerno, Italia"
+    },
+    "IT0302": {
+        "clientCode": "IT0302",
+        "comercial": "LE MARIAGE MODENA",
+        "name": "BRIDE FASHION SRL",
+        "fiscal": "IT01945640389",
+        "email": "ordinife@lemariage.it",
+        "adress": "Via Emilia est, 947, 41126 Modena, Modena, Italia"
+    },
+    "IT0303": {
+        "clientCode": "IT0303",
+        "comercial": "LE MARIAGE FERRARA",
+        "name": "DRESS COUTURE SRL",
+        "fiscal": "IT01959480383",
+        "email": "info@lemariage.it",
+        "adress": "Via Bologna, 111, 44124 Ferrara, Ferrara, Italia"
+    },
+    "IT0308": {
+        "clientCode": "IT0308",
+        "comercial": "CIRILLO SPOSA",
+        "name": "SARTORIA CIRILLO S.R.L.",
+        "fiscal": "IT02384410599",
+        "email": "info@cirillosposa.it",
+        "adress": "VIA DELLE MARGHERITE 69, 04011 APRILIA, Latina, Italia"
+    },
+    "IT0311": {
+        "clientCode": "IT0311",
+        "comercial": "MARCELLONI SPOSA",
+        "name": "MARCELLONI S.R.I.",
+        "fiscal": "IT01335880553",
+        "email": "info@marcellonisposa.it",
+        "adress": "VIALE DONATO BRAMANTE 107, 05100 TERNI, Terni, Italia"
+    },
+    "IT0314": {
+        "clientCode": "IT0314",
+        "comercial": "DIEMME SPOSI",
+        "name": "DIEMME SPOSI DI SEVERIN MARISA",
+        "fiscal": "IT05586380288",
+        "email": "info@diemmesposi.it",
+        "adress": "VIA MARTIRI DELLA LIBERTA, 40, 31023 RESANA, Treviso, Italia"
+    },
+    "IT0315": {
+        "clientCode": "IT0315",
+        "comercial": "EMOZIONI ATELIER POTENZA",
+        "name": "EMOZIONI - S.A.S. DI LUCIANA PEPE & C.",
+        "fiscal": "IT01806910764",
+        "email": "lucianapepe@virgilio.it",
+        "adress": "Viale Marconi, 87, 85100 Potenza, Potenza, Italia"
+    },
+    "IT0321": {
+        "clientCode": "IT0321",
+        "comercial": "VIRGINIO SPOSA",
+        "name": "VIREP SRLS",
+        "fiscal": "IT02227710684",
+        "email": "virep.direzione@gmail.com",
+        "adress": "Via Emilia, 10, 65122 Pescara, Pescara, Italia"
+    },
+    "IT0328": {
+        "clientCode": "IT0328",
+        "comercial": "QUALCOSA DI BLU",
+        "name": "TARGA DI MAURO TARGA",
+        "fiscal": "IT01242920328",
+        "email": "info@qualcosadiblu-trieste.com",
+        "adress": "VIA A. DIAZ 16, 34124 TRIESTE, Trieste, Italia"
+    },
+    "IT0329": {
+        "clientCode": "IT0329",
+        "comercial": "ATELIER RAFFAELLA ZUCCHETTO",
+        "name": "POLARIS SRL",
+        "fiscal": "IT02554030649",
+        "email": "info@raffaellazucchetto.it",
+        "adress": "Contrada Cardito, 20, 83031 Ariano Irpino, Avellino, Italia"
+    },
+    "IT0331": {
+        "clientCode": "IT0331",
+        "comercial": "PIAZZA NAVONA SPOSI",
+        "name": "PIAZZA NAVONA DI PETRILLI ROSETTA",
+        "fiscal": "IT02816410787",
+        "email": "piazzanavonasposi@libero.it",
+        "adress": "CONTRADA PETRARO, 87040 ROSE, Cosenza, Italia"
+    },
+    "IT0333": {
+        "clientCode": "IT0333",
+        "comercial": "ST. CLAIRE ATELIER SPOSA",
+        "name": "WHITE LAB SRLS",
+        "fiscal": "IT02161640673",
+        "email": "atelier.stclaire@gmail.com",
+        "adress": "Via Luigi Paris 16, 64100 TERAMO, Italia"
+    },
+    "IT0336": {
+        "clientCode": "IT0336",
+        "comercial": "LA SPOSA DI VOGUE",
+        "name": "LA SPOSA DI VOGUE DI DANESE PIERGIORGIO",
+        "fiscal": "IT02179370669",
+        "email": "pierodanese@gmail.com",
+        "adress": "Via Monte Velino, 119, 67051 Avezzano, L'Aquila, Italia"
+    },
+    "IT0341": {
+        "clientCode": "IT0341",
+        "comercial": "LINA SPOSE",
+        "name": "LINA SPOSE DI GALANTE LINA",
+        "fiscal": "IT01537580696",
+        "email": "info@linaspose.it",
+        "adress": "Via San Luca, 32, 66041 Atessa, Chieti, Italia"
+    },
+    "IT0343": {
+        "clientCode": "IT0343",
+        "comercial": "CENTRO SPOSI DEL PRETE",
+        "name": "CENTROSPOSI DEL PRETE SRL",
+        "fiscal": "IT01937160743",
+        "email": "info@centrosposidelprete.it",
+        "adress": "Via Campi, 105, 72025 San Donaci, Brindisi, Italia"
+    },
+    "IT0344": {
+        "clientCode": "IT0344",
+        "comercial": "IMPERIA SPOSI",
+        "name": "CLAUDIA EVENTI SRLS",
+        "fiscal": "IT02055910851",
+        "email": "claudia.famiano@gmail.com",
+        "adress": "Corso Sicilia 83, 93017 San Cataldo, Caltanissetta, Italia"
+    },
+    "IT0357": {
+        "clientCode": "IT0357",
+        "comercial": "WEDDING STYLE ATELIER",
+        "name": "WEDDING STYLE ATELIER DI MARIA GRAZIA PARLASCINO",
+        "fiscal": "IT01256350867",
+        "email": "weddingstyleatelier@gmail.com",
+        "adress": "Via Nino Bixio, 60, 94015 Piazza Armerina, Enna, Italia"
+    },
+    "IT0359": {
+        "clientCode": "IT0359",
+        "comercial": "STUDIO SPOSA",
+        "name": "STUDIO SPOSA S.A.S. DI STIVANELLO MONICA & C.",
+        "fiscal": "IT01316530284",
+        "email": "info@studiosposa.com",
+        "adress": "VIA VERDI, 6, 35026 Conselve, Italia"
+    },
+    "IT0361": {
+        "clientCode": "IT0361",
+        "comercial": "INDACO SPOSI",
+        "name": "VANIA SPOSI SOC COOP",
+        "fiscal": "IT02929610844",
+        "email": "vaniasposi@virgilio.it",
+        "adress": "VIA GELA, 209, 92027 LICATA, Agrigento, Italia"
+    },
+    "IT0362": {
+        "clientCode": "IT0362",
+        "comercial": "BOUTIQUE AMETRANO",
+        "name": "BOUTIQUE AMETRANO DI AMETRANO GIAMPAOLO",
+        "fiscal": "IT04043010653",
+        "email": "info@boutiqueametrano.it",
+        "adress": "Piazza S.Caterina, 5, 84078 VALLO DELLA LUCANIA, Salerno, Italia"
+    },
+    "IT0366": {
+        "clientCode": "IT0366",
+        "comercial": "VIRGINIO SPOSA E CERIMONIA",
+        "name": "BRIDAL SRLS",
+        "fiscal": "IT02427210683",
+        "email": "bridal.direzione@gmail.com",
+        "adress": "Via Ricasoli, 24, 66020 San Giovanni Teatino, Chieti, Italia"
+    },
+    "IT0369": {
+        "clientCode": "IT0369",
+        "comercial": "SPOSA MIRELLA BLANCO",
+        "name": "SPOSA MIRELLA BLANCO",
+        "fiscal": "IT01088040884",
+        "email": "info@sposamirellablanco.it",
+        "adress": "VIA SACRO CUORE 114, 97015 MODICA, Italia"
+    },
+    "IT0370": {
+        "clientCode": "IT0370",
+        "comercial": "HD SPOSI",
+        "name": "HD SPOSI SRLS",
+        "fiscal": "IT02799420423",
+        "email": "info@hdsposi.it",
+        "adress": "VIA ANCONA 43, 60027 OSIMO, Italia"
+    },
+    "IT0371": {
+        "clientCode": "IT0371",
+        "comercial": "LA SPOSA DI FIRENZE",
+        "name": "LA SPOSA DI FIRENZE S.N.C. DI M.&D.BENCINI",
+        "fiscal": "IT00526400486",
+        "email": "info@lasposadifirenze.it",
+        "adress": "Via gianbattista Lulli , 2, 50144 Firenze, Firenze, Italia"
+    },
+    "IT0373": {
+        "clientCode": "IT0373",
+        "comercial": "ATELIER GIULIA",
+        "name": "JULIEN MATTION A.GIULIA DI SCOGNAMIGLIO ROSARIA",
+        "fiscal": "IT01000501211",
+        "email": "atelier.giulia@libero.it",
+        "adress": "VIA DANTE ALIGHIERI, 13, 80040 VOLLA, Napoli, Italia"
+    },
+    "IT0378": {
+        "clientCode": "IT0378",
+        "comercial": "ATELIER FIORI D’ARANCIO ARIANO IRPINO",
+        "name": "ATELIER FIORI D'ARANCIO DI DE GRUTTOLA RAFFAELLA & C. SNC",
+        "fiscal": "3182140644",
+        "email": "info@atelierfioridarancio.it",
+        "adress": "VIA S. TOMMASO SNC, 83031 Ariano Irpino, Avellino, Italia"
+    },
+    "IT0387": {
+        "clientCode": "IT0387",
+        "comercial": "ATELIER KETTY",
+        "name": "ATELIER KETTY SRL",
+        "fiscal": "IT09520641219",
+        "email": "atelierketty@alice.it",
+        "adress": "VIA TRIESTE E TRENTO 8, 80011 ACERRA, Italia"
+    },
+    "IT0394": {
+        "clientCode": "IT0394",
+        "comercial": "ERRICO MARIA ALTA MODA SPOSA",
+        "name": "OFFICINA CALIMALA SRL, IT0394-ERRICO MARIA (BARI",
+        "fiscal": "IT02544830744",
+        "email": "erricomaria@erricomaria.it",
+        "adress": "VIA DE ROSSI 39, 70123 BARI, Bari, Italia"
+    },
+    "IX0305": {
+        "clientCode": "IX0305",
+        "comercial": "WHITE HOUSE BRIDAL",
+        "name": "AMANDA WHITEMAN",
+        "fiscal": "GB407366595",
+        "email": "whitehousebridal@outlook.com",
+        "adress": "70 EDENMORE ROAD, BT94 3BS TEMPO, United Kingdom"
+    },
+    "KR0316": {
+        "clientCode": "KR0316",
+        "comercial": "Hwang, Junga",
+        "name": "HwangJungA Co.Ltd",
+        "fiscal": "52-08-701917",
+        "email": "gowhitevogue@gmail.com",
+        "adress": "84-7 Chungdam-dong Gangnam-gu, 06014 SEOUL, Corea del Sur"
+    },
+    "LU0259": {
+        "clientCode": "LU0259",
+        "comercial": "BLISS BRIDAL",
+        "name": "BLISS BRIDAL S.A R.L.",
+        "fiscal": "LU27600718",
+        "email": "info@blissbridal.lu",
+        "adress": "RUE LOUVIGNY, 18, L-1946 Lussemburgo, Luxemburgo"
+    },
+    "MX0367": {
+        "clientCode": "MX0367",
+        "comercial": "EURONOVIAS",
+        "name": "DISEÑOS CARANT",
+        "fiscal": "EUR960430TW1",
+        "email": "antonio_abud@hotmail.com",
+        "adress": "Calle 56, 63A y 65 519 centro, 97000 MERIDA, Yucatán, México"
+    },
+    "MX0380": {
+        "clientCode": "MX0380",
+        "comercial": "NOVIAs & CO. INTERNATIONAL COLLECTION",
+        "name": "NOVIAs & CO. INTERNATIONAL COLLECTION",
+        "fiscal": "MEBL741116FH0",
+        "email": "noviasco@gmail.com",
+        "adress": "Av. Corregidora Nte. 352, Alamos 3ra Secc, 76160 Queretaro, México"
+    },
+    "MX0381": {
+        "clientCode": "MX0381",
+        "comercial": "SPOSA MIA",
+        "name": "BLANCA YUZALETH RAMOS CHACON",
+        "fiscal": "RACB8007126A0",
+        "email": "yuz67@hotmail.com",
+        "adress": "Av. de la Cantera 8937, Misiones III Etapa, 31216 CHIHUAHUA, Chihuahua, México"
+    },
+    "MX0382": {
+        "clientCode": "MX0382",
+        "comercial": "LAFAYETTE NOVIAS, SA CV",
+        "name": "LAFAYETTE NOVIAS, S.A. DE C.V.",
+        "fiscal": "LNO0005184R4",
+        "email": "brenoj7777@aol.com",
+        "adress": "Av. Humberto Lobo 520 66220-Local B02, Del Valle, 66220 San Pedro Garza García, N.L, México"
+    },
+    "MX0384": {
+        "clientCode": "MX0384",
+        "comercial": "LAUARA REZA BRIDES",
+        "name": "VICTOR HUGO FRAIRE GARCIA",
+        "fiscal": "FAGV700531JG0",
+        "email": "vhfraire@hotmail.com",
+        "adress": "AV. BENITO JUAREZ 3165 OTE ALTOS, 27000 TORREÓN, Coahuila, México"
+    },
+    "MX0385": {
+        "clientCode": "MX0385",
+        "comercial": "THE WEDDING BOUTIQUE BY LAYLA VILLALOBOS",
+        "name": "LAYLA MUNIRA VILLALOBOS OCHOA",
+        "fiscal": "VIOL831003IB1",
+        "email": "layla8a@gmail.com",
+        "adress": "Blvd. Aguacaliente 10383, 22020 Tijuana, Baja California, México"
+    },
+    "MX0388": {
+        "clientCode": "MX0388",
+        "comercial": "SPOSA BELLA NOVIAS",
+        "name": "CASA DELLA SPOSA - CDMX",
+        "fiscal": "CDS9908307I0",
+        "email": "sposabellamx@gmail.com",
+        "adress": "PRESIDENTE MASARIK 114, 11580 CDMX, Ciudad de México, México"
+    },
+    "MX0395": {
+        "clientCode": "MX0395",
+        "comercial": "VALENTINA NOVIAS",
+        "name": "GABRIELA ALEJANDRA ROBERTO ZAMARRIPA",
+        "fiscal": "ROZG780522398",
+        "email": "valentinanovias.ags@gmail.com",
+        "adress": "Pedro Parga 127, 20000 Aguascalientes, Aguascalientes, México"
+    },
+    "NL0035": {
+        "clientCode": "NL0035",
+        "comercial": "AMIGA BRIDAL STORE",
+        "name": "AMIGA BRIDAL STORE",
+        "fiscal": NaN,
+        "email": "info@amiga.eu",
+        "adress": "NIEUWSTRAAT 5, 4811 WX BREDA, Holanda"
+    },
+    "NL0207": {
+        "clientCode": "NL0207",
+        "comercial": "BRUIDSPALEIS ROTTERDAM",
+        "name": "BRUIDS-PALEIS ROTTERDAM B.V.",
+        "fiscal": "NL852353583B01",
+        "email": "maurice@bruidspaleis.nl",
+        "adress": "Mauritsweg, 23, 3012 JR Rotterdam, Netherlands"
+    },
+    "NL0208": {
+        "clientCode": "NL0208",
+        "comercial": "BRUIDSPALEIS DEN HAAG",
+        "name": "BRUIDS- PALEIS BORSBOOM B.V.",
+        "fiscal": "NL801544737B01",
+        "email": "maurice@bruidspaleis.nl",
+        "adress": "Laan van Meerdervoort, 56 A, 2515 AN Den Haag, Holanda"
+    },
+    "NL0242": {
+        "clientCode": "NL0242",
+        "comercial": "CHAR BRIDAL COUTURE",
+        "name": "V.O.F. CHAR COUTURE",
+        "fiscal": NaN,
+        "email": "info@charbridalcouture.com",
+        "adress": "Kruisstraat, 12, 7941AN Meppel, Holanda"
+    },
+    "PE0332": {
+        "clientCode": "PE0332",
+        "comercial": "LUNA BLANCO S.A.C.",
+        "name": "LUNA BLANCO S.A.C",
+        "fiscal": "20602846602",
+        "email": "grizopatront@gmail.com",
+        "adress": "Av. José Larco 841, 15074 MIRAFLORES, Lima, Perú"
+    },
+    "PR0372": {
+        "clientCode": "PR0372",
+        "comercial": "D'ROYAL BRIDE",
+        "name": "D'ROYAL BRIDE",
+        "fiscal": "FR80389592214",
+        "email": "droyalbride@gmail.com",
+        "adress": "10 12 AVENIU FD ROOSEVELT, 00920 SANT JUAN DE PUERTO RICO, Estados Unidos"
+    },
+    "PT0004": {
+        "clientCode": "PT0004",
+        "comercial": "AMOUR GLAMOUR GOLD",
+        "name": "COMÉRCIO DE VESTUÁRIO LDA",
+        "fiscal": "PT505475774",
+        "email": "geral@noivosgondomar.com",
+        "adress": "RUA DA SOFIA, 163, 3000-391 COIMBRA, Coimbra, Portugal"
+    },
+    "PT0280": {
+        "clientCode": "PT0280",
+        "comercial": "NOVIAS D.DINIS",
+        "name": "ROLUR NOIVAS PRONTO A VESTIR LDA",
+        "fiscal": "PT502169486",
+        "email": "DDNOIVAS@GMAIL.COM",
+        "adress": "AVD COMANDANTE ALMEIDA HENRIQUES 1, 2400-089 LEIRIA, Portugal"
+    },
+    "PT0356": {
+        "clientCode": "PT0356",
+        "comercial": "AMOUR GLAMOUR",
+        "name": "COMÉRCIO DE VESTUÁRIO LDA",
+        "fiscal": "PT505475774",
+        "email": "geral@noivosdegondomar.pt",
+        "adress": "RUA DA SOFIA, 163, 3000-391 COIMBRA, Coimbra, Portugal"
+    },
+    "RD0403": {
+        "clientCode": "RD0403",
+        "comercial": "THE WHITE DRESS SRL",
+        "name": "THE WHITE DRESS SRL",
+        "fiscal": "132-61247-7",
+        "email": "santana.chantal@gmail.com",
+        "adress": "Plaza Dorada casi esquina, C Manuel de Jesús Troncoso,, 10127 Santo Domingo, República Dominicana"
+    },
+    "RO0389": {
+        "clientCode": "RO0389",
+        "comercial": "BRIDAL STUDIO ROMANIA",
+        "name": "BRIDAL STUDIO SRL",
+        "fiscal": "RO17645303",
+        "email": "meni@bridalstudio.ro",
+        "adress": "STR. CALEA VICTORIEI, NR. 44-46, SECTOR-1 Bucharest, Rumania"
+    },
+    "SE0238": {
+        "clientCode": "SE0238",
+        "comercial": "MILAGRO GOWNS STOCKHOLM",
+        "name": "NAHRINS BRUD AND FEST AB",
+        "fiscal": "SE556859166201",
+        "email": "NAHRIN@MILAGRODENAHRIN.SE",
+        "adress": "Karlavägen, 114 49 Stockholm, Sweden"
+    },
+    "SI0309": {
+        "clientCode": "SI0309",
+        "comercial": "JANINA PERKO",
+        "name": "SANJSKA OBLEKA",
+        "fiscal": "SI62936387",
+        "email": "janina.perko@gmail.com",
+        "adress": "PEROVO 30, 1241 KAMNIK, Slovenia"
+    },
+    "SM0398": {
+        "clientCode": "SM0398",
+        "comercial": "ATELIER DELLA SPOSA SAN MARINO",
+        "name": "ATELIER DELLA SPOSA SAN MARINO",
+        "fiscal": "SM31334",
+        "email": "chiara.nisi.nc@gmail.com",
+        "adress": "VIA 3 SETTEMBRE, 43, 47891 SAN MARINO, San Marino"
+    },
+    "TR0349": {
+        "clientCode": "TR0349",
+        "comercial": "VAKKO",
+        "name": "VAKKO HAZ.GIY SAN TIC AS",
+        "fiscal": "TR9220035750",
+        "email": "mahir.catalkaya@vakko.com.tr",
+        "adress": "KOZA MAH 1673.SOK 125, 34517 ISTANBUL, Turquía"
+    },
+    "UK0216": {
+        "clientCode": "UK0216",
+        "comercial": "THE BRIDAL ROOM",
+        "name": "THE BRIDAL ROOM WEDDING SERVICES LTD",
+        "fiscal": "GB123456782",
+        "email": "sue@bridalroom.co.uk",
+        "adress": "57 London Road, RH2 9AR REIGATE, Surrey, United Kingdom"
+    },
+    "UK0226": {
+        "clientCode": "UK0226",
+        "comercial": "GEORGINA SCOTT BRIDAL",
+        "name": "YOUR PERFECT SETTING LIMITED",
+        "fiscal": NaN,
+        "email": "enquiries@georginascottbridal.co.uk",
+        "adress": "The Chapel, Pedmore Road, DY9 8DJ Stourbridge, West Midlands, Reino Unido"
+    },
+    "UK0234": {
+        "clientCode": "UK0234",
+        "comercial": "ANNE PRISCILLA BRIDAL",
+        "name": "KAREN MADDEN",
+        "fiscal": "GB929640106",
+        "email": "shop@annepriscillabridal.co.uk",
+        "adress": "57 Miller Street, G1 1EB Glasgow, Lanarkshire, Reino Unido"
+    },
+    "UK0246": {
+        "clientCode": "UK0246",
+        "comercial": "FELLSIDE BRIDAL",
+        "name": "FELLSIDE BRIDES LTD",
+        "fiscal": "GB325024933",
+        "email": "fellsidebrides@outlook.com",
+        "adress": "38 WOOLPACK YARD, LA9 4NG KENDAL, Cumbria, Reino Unido"
+    },
+    "UK0265": {
+        "clientCode": "UK0265",
+        "comercial": "BRIDHA",
+        "name": "BLISS BRIDAL (BOLTON",
+        "fiscal": "GB875801987",
+        "email": "info@bridha.co.uk",
+        "adress": "178 ST GEORGES ROAD, BL1 2PH BOLTON, United Kingdom"
+    },
+    "UK0270": {
+        "clientCode": "UK0270",
+        "comercial": "SILK - BONEHILL WHITE",
+        "name": "SILK - BONEHILL WHITE",
+        "fiscal": "GB198206579",
+        "email": "info@silkbrides.com",
+        "adress": "BLITHBURY MANOR, UTOXTER ROAD, WS153HY RUGELEY, Staffordshire, Reino Unido"
+    },
+    "UK0281": {
+        "clientCode": "UK0281",
+        "comercial": "BRIDAL PATH LTD",
+        "name": "BRIDAL PATH LTD",
+        "fiscal": NaN,
+        "email": "enquiries@bridalpathltd.co.uk",
+        "adress": "13 Market Street, WA14 1QS Altrincham, Cheshire, United Kingdom"
+    },
+    "UK0286": {
+        "clientCode": "UK0286",
+        "comercial": "DOTTY BRIDAL",
+        "name": "DOTTY TAYLOR BRIDAL LIMITED",
+        "fiscal": "GB257363193",
+        "email": "orders@dottybridal.co.uk",
+        "adress": "13 Victoria Street, HD9 7DF HOLMFIRTH, West Yorkshire, United Kingdom"
+    },
+    "UK0294": {
+        "clientCode": "UK0294",
+        "comercial": "HOUSE OF SNOW",
+        "name": "HOUSE OF SNOW LTD",
+        "fiscal": "GB238338394",
+        "email": "harriet@houseofsnow.co.uk",
+        "adress": "5A HATTER STREET, IP33 1LZ BURY ST EDMUNDS, Suffolk, United Kingdom"
+    },
+    "UK0317": {
+        "clientCode": "UK0317",
+        "comercial": "THE IVORY DRESSING ROOM",
+        "name": "THE IVORY DRESSING ROOM LIMITED",
+        "fiscal": "GB247546189",
+        "email": "info@theivorydressingroom.co.uk",
+        "adress": "435 LYTHAN ROAD, FY4 1JD BLACKPOOL, Lancashire, Reino Unido"
+    },
+    "UK0319": {
+        "clientCode": "UK0319",
+        "comercial": "BRIDAL CAPRICE",
+        "name": "BRIDAL CAPRICE BOUTIQUE",
+        "fiscal": NaN,
+        "email": "info@bridalcaprice.co.uk",
+        "adress": "42 Shepards bush road, WA6 7PJ Hammersmith, London, Reino Unido"
+    },
+    "UK0322": {
+        "clientCode": "UK0322",
+        "comercial": "HUGO AND ELLIOT BRIDAL",
+        "name": "HUGO AND ELLIOT LTD",
+        "fiscal": "GB425649675",
+        "email": "sean@hugoandelliot.co.uk",
+        "adress": "117a High Street, TS20 1AA Stockton On Tees, County Durham, United Kingdom"
+    },
+    "UK0339": {
+        "clientCode": "UK0339",
+        "comercial": "MERINGUE BRIDAL BOUTIQUE",
+        "name": "MERINGUE LTD",
+        "fiscal": "GB447323592",
+        "email": "hello@meringuebrides.co.uk",
+        "adress": "279 HOYLAKE ROAD, CH46 0RL WIRRAL, Merseyside, United Kingdom"
+    },
+    "UK0342": {
+        "clientCode": "UK0342",
+        "comercial": "SORELLA BRIDAL",
+        "name": "JT BUSINESS DEVELOPMENT SERVICES LIMITED",
+        "fiscal": "GB440958773",
+        "email": "sorellabridal@outlook.com",
+        "adress": "300 HIGH STREET, DL78DW NORTHALLERTON, North Yorkshire, United Kingdom"
+    },
+    "UK0363": {
+        "clientCode": "UK0363",
+        "comercial": "SOPHIA GRACE COUTURE",
+        "name": "SOPHIA GRACE COUTURE LTD",
+        "fiscal": "GB247913974",
+        "email": "info@sophiagracecouture.com",
+        "adress": "54 Court Street, EH41 3AF Haddington, East Lothian, Reino Unido"
+    },
+    "UK0392": {
+        "clientCode": "UK0392",
+        "comercial": "THE WEDDING SHOP",
+        "name": "JITTERS LTD",
+        "fiscal": "GB434875524",
+        "email": "info@theweddingshop.uk",
+        "adress": "4 High Street, CO1 1DA Colchester, Essex, Reino Unido"
+    },
+    "UK0405": {
+        "clientCode": "UK0405",
+        "comercial": "LAURA MAY BRIDAL",
+        "name": "LAURA MAY BRIDAL LTD",
+        "fiscal": "GB101629256",
+        "email": "hello@lauramaybridal.co.uk",
+        "adress": "22-24 Morgan Arcade, CFIO IAF Cardiff, Reino Unido"
+    },
+    "US0274": {
+        "clientCode": "US0274",
+        "comercial": "KLEINFELD",
+        "name": "KLEINFELD",
+        "fiscal": "56-2361715",
+        "email": "furano@kleinfeldbridal.com",
+        "adress": "110 West 20th Street, 10011 Nueva York, Estados Unidos"
+    },
+    "US0377": {
+        "clientCode": "US0377",
+        "comercial": "BRIDALS BY AIMEE",
+        "name": "BRIDALS BY AIMEE",
+        "fiscal": "US51891665432",
+        "email": "bride@bridalsbyaimee.com",
+        "adress": "30341 ATLANTA, Estados Unidos"
+    },
+    "VE0350": {
+        "clientCode": "VE0350",
+        "comercial": "ROSEWOOD BRIDES",
+        "name": "ROSEWOOD BRIDES",
+        "fiscal": "J-50080268-4",
+        "email": "anwarfakih3@gmail.com",
+        "adress": "Avenida Principal de las Mercedes, 1080 Caracas, Miranda, Venezuela"
+    },
+    "XI0230": {
+        "clientCode": "XI0230",
+        "comercial": "LA BRIDAL HOUSE",
+        "name": "LA BRIDAL HOUSE LTD",
+        "fiscal": NaN,
+        "email": "LABRIDALHOUSELTD@GMAIL.COM",
+        "adress": "5b Ivy Hill, BT28 3SL Lisburn, County Antrim, United Kingdom"
+    },
+    "XI0257": {
+        "clientCode": "XI0257",
+        "comercial": "LA BODA BRIDAL",
+        "name": "LA BODA BRIDAL LTD",
+        "fiscal": "XI835682207",
+        "email": "info@labodabridal.com",
+        "adress": "11 Church Square, BT32 4AS Banbridge, United Kingdom"
+    },
     };
 
 
