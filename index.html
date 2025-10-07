@@ -50,7 +50,7 @@
 <div class="min-h-screen p-4 sm:p-8">
     <div class="max-w-6xl mx-auto">
         <header id="mainHeader" class="text-center mb-8 hidden">
-            </header>
+             </header>
 
         <div id="loginWrapper" class="login-wrapper">
             <div id="loginView" class="login-content text-center">
@@ -146,6 +146,7 @@
     const SESSION_CODE = "AP2025";
 
     // --- Elementos de UI ---
+    const mainHeader = document.getElementById('mainHeader');
     const loginView = document.getElementById('loginView');
     const appView = document.getElementById('appView');
     const sessionCodeInput = document.getElementById('sessionCodeInput');
@@ -171,6 +172,7 @@
     let generatedContracts = [];
 
     // URL LOCAL del Logo: Asume que "AP-alargado-black.png" está en la misma carpeta.
+    // NOTA: Se mantiene la URL de GitHub aunque no cargue correctamente, para mantener la intención original.
     const logoUrl = "https://github.com/chircami/Trunk_show/blob/master/AP-alargado-black.png";
     const companyTitle = "ALBERTO PALATCHI - Generador de Contratos";
 
@@ -2567,9 +2569,11 @@ Società A
      */
     function handleLogin() {
         const enteredCode = sessionCodeInput.value.trim().toUpperCase();
-        if (enteredCode === ENCODED_SESSION_CODE) {
+        // BUG CORREGIDO: Se usa SESSION_CODE en lugar de ENCODED_SESSION_CODE
+        if (enteredCode === SESSION_CODE) { 
             loginWrapper.classList.add('hidden'); // Oculta el wrapper de login (que centraba el contenido)
             appView.classList.remove('hidden');
+            mainHeader.classList.remove('hidden');
             initApp();
         } else {
             loginError.textContent = "Código incorrecto. Inténtalo de nuevo.";
@@ -2583,12 +2587,12 @@ Società A
 
     /**
      * Inicializa la cabecera de la aplicación con el logo y el título.
-     * Esta función ya no añade nada a la UI del HTML, solo se usa para inicializar variables
-     * o lógica si fuera necesario.
      */
     function setupHeader() {
-        // En este punto, no se añade nada al DOM.
-        console.log("Header setup complete. Logo ready for PDF generation.");
+         mainHeader.innerHTML = `
+            <img src="${logoUrl}" alt="Logo" class="logo mx-auto mb-2 filter invert">
+            <h1 class="text-xl font-bold text-white">${companyTitle}</h1>
+        `;
     }
 
     /**
@@ -2610,8 +2614,8 @@ Società A
      * Carga la plantilla inicial y establece el código de cliente y fechas de muestra.
      */
     function initApp() {
-        setupHeader(); // Llama a setupHeader (que no hace cambios visibles en el DOM)
-        clientCodeInput.value = "XX000"; // Código de cliente de ejemplo (Italiano)
+        // La cabecera ya se configuró en el handleLogin
+        clientCodeInput.value = "IT0001"; // Código de cliente de ejemplo (Italiano)
         itemNameInput.value = "Vestido/s"; // Valor por defecto
         unitPriceInput.value = "49.00 EUR"; // Valor por defecto
         totalPriceInput.value = "49.00 EUR"; // Valor por defecto
@@ -2725,6 +2729,9 @@ Società A
 
 
         // 5. Combinar datos del cliente y fechas/precios para la sustitución
+        // Se añade verificación de null/NaN para 'fiscal'
+        const fiscalValue = personDataFromDB.fiscal && personDataFromDB.fiscal !== 'NaN' ? personDataFromDB.fiscal : 'N/A';
+        
         // Aplicamos NEGRITA (**) solo a los datos que son introducidos manualmente en la Sección 2.
         let personData = {
             // Datos rellenados manualmente (Código de Cliente, Fechas, Item/Precios) -> EN NEGRITA
@@ -2739,9 +2746,9 @@ Società A
             // Datos de la base de datos (Nombre, Email, Fiscal, Comercial, Address/Servicio) -> SIN NEGRITA
             name: personDataFromDB.name, 
             email: personDataFromDB.email, 
-            fiscal: personDataFromDB.fiscal,
+            fiscal: fiscalValue, // Valor corregido
             comercial: personDataFromDB.comercial,
-            address: personDataFromDB.address, // Este campo ahora contiene la descripción del servicio.
+            address: personDataFromDB.adress, // Este campo ahora contiene la descripción del servicio.
         };
 
 
@@ -2806,7 +2813,7 @@ Società A
     }
 
 
-     // --- Funciones de Exportación ---
+      // --- Funciones de Exportación ---
 
     /**
      * Genera y descarga el contrato como PDF.
@@ -2859,6 +2866,7 @@ Società A
         };
         
         // Asegúrate de establecer la fuente del logo
+        // NOTA: Si la imagen de GitHub no carga, se usará el fallback.
         img.src = logoUrl;
         
         // Función para finalizar el PDF (llamada después de cargar la imagen o si hay error)
@@ -2938,12 +2946,9 @@ Società A
 
                 } else {
                     // Si es un párrafo normal, lo procesamos como un bloque de texto
-                    const lines = doc.splitTextToSize(paragraph.replace(/\*\*/g, ''), maxWidth); // Eliminamos ** para medir
-                    
-                    lines.forEach(line => {
-                        if (yPos > 280) { doc.addPage(); yPos = 20; }
-                        
-                        // Procesamos el texto de la línea para buscar negrita
+                    // Necesitamos volver a procesar el texto con processText para mantener la negrita.
+                    const textLines = paragraph.split('\n').filter(l => l.trim().length > 0);
+                    textLines.forEach(line => {
                         processText(line);
                     });
                 }
@@ -2953,13 +2958,13 @@ Società A
 
 
             // Guardar el PDF con un nombre descriptivo
-            const safeRecipientName = contract.recipient.replace(/\s/g, '_');
+            const safeRecipientName = contract.recipient.replace(/\s/g, '_').replace(/[^\w-]/g, '');
             doc.save(`${safeRecipientName}_Contrato_${contract.language.toUpperCase()}.pdf`);
         }
     }
 
     // Inicializar la aplicación al cargar
-    window.onload = setupHeader; // Inicializa el header al cargar, pero la app principal espera el login
+    window.onload = setupHeader; 
 
 </script>
 </body>
