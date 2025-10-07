@@ -2806,7 +2806,7 @@ Società A
     }
 
 
-    // --- Funciones de Exportación ---
+     // --- Funciones de Exportación ---
 
     /**
      * Genera y descarga el contrato como PDF.
@@ -2828,13 +2828,18 @@ Società A
         // Cargar y dibujar el logo en el PDF usando la URL local
         const logoWidth = 40; 
         const logoHeight = 13; 
+
+        // --- LÓGICA DE CENTRADO AÑADIDA ---
+        const pdfWidth = doc.internal.pageSize.getWidth(); // Obtiene el ancho del PDF (normalmente 210mm para A4)
+        const xCenter = (pdfWidth / 2) - (logoWidth / 2); // Calcula el punto X de inicio para el centrado
+        // --- FIN LÓGICA DE CENTRADO ---
         
         // Uso de Image() para cargar la imagen asíncronamente y luego añadirla
         const img = new Image();
         img.onload = function() {
             try {
                 // img.src ya está establecida a 'AP-alargado-black.png'
-                doc.addImage(img, 'PNG', margin, yPos, logoWidth, logoHeight);
+                doc.addImage(img, 'PNG', xCenter, yPos, logoWidth, logoHeight); // Usa xCenter para centrar
                 yPos += logoHeight + lineHeight * 0.5; // Deja espacio después del logo
                 
                 // Resto del proceso de generación del PDF (ahora dentro del callback)
@@ -2945,24 +2950,6 @@ Società A
                 
                 yPos += lineHeight * 0.3; 
             });
-
-
-            // --- Se elimina el bloque de firma y pie de página de la solicitud del usuario ---
-            /*
-            yPos += 20;
-            if (yPos > 280) { doc.addPage(); yPos = 20; }
-            
-            doc.setFontSize(10);
-            doc.setTextColor(156, 163, 175); 
-            doc.text("--------------------------------------------------", margin, yPos);
-            yPos += lineHeight * 0.5;
-            doc.setFontSize(11);
-            doc.setTextColor(0, 0, 0);
-            doc.text(`Generado para: ${contract.recipient}`, margin, yPos);
-            yPos += lineHeight * 0.5;
-            doc.text("Documento final (Sin solicitud de firma electrónica)", margin, yPos);
-            */
-            // --------------------------------------------------------------------------------
 
 
             // Guardar el PDF con un nombre descriptivo
