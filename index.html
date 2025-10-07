@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contratos Personalizados | Gemini</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Personalización de fuente y estilos */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+        }
+        .container-card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .input-area {
+            min-height: 250px;
+        }
+        /* Estilo para los inputs de fecha */
+        input[type="date"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+        }
+        .logo {
+            max-height: 40px; /* Tamaño máximo para el logo en la cabecera */
+            width: auto;
+        }
+        /* Estilo para centrar el formulario de login en la pantalla negra */
+        .login-wrapper {
+            /* Altura mínima para centrar el contenido verticalmente */
+            min-height: 100vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Estilo para los elementos del login dentro del wrapper */
+        .login-content {
+            max-width: 320px; /* Ancho fijo para centrar los elementos */
+            width: 100%;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<div class="min-h-screen p-4 sm:p-8">
+    <div class="max-w-6xl mx-auto">
+        <header id="mainHeader" class="text-center mb-8 hidden">
+            </header>
+
+        <div id="loginWrapper" class="login-wrapper">
+            <div id="loginView" class="login-content text-center">
+                <input type="password" id="sessionCodeInput" placeholder="Escribe tu código para acceder" class="py-2.5 px-3 border border-white rounded-3xl w-full text-center mb-4 focus:ring-blue-500 focus:border-blue-500 transition duration-150 bg-transparent text-white placeholder-gray-400">
+                <button onclick="handleLogin()" class="w-full px-8 py-3 bg-white text-black font-bold rounded-3xl border border-white hover:bg-black hover:text-white hover:shadow-none transition duration-200">
+                    Acceder <i class="fas fa-sign-in-alt ml-2"></i>
+                </button>
+                <p id="loginError" class="text-red-500 text-sm mt-4 font-medium hidden">Código incorrecto. Inténtalo de nuevo.</p>
+            </div>
+        </div>
+
+        <div id="appView" class="bg-white p-6 rounded-xl container-card space-y-8 hidden">
+
+            <div class="pt-2 pb-6">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-4">1. Idioma</h2>
+                <div class="mb-4">
+                    <label for="templateLanguage" class="block text-sm font-medium text-gray-700 mb-2">Seleccionar Idioma:</label>
+                    <select id="templateLanguage" onchange="loadTemplate()" class="p-3 border border-gray-300 rounded-lg w-full sm:w-1/3 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                        <option value="it">(IT) Italiano</option>
+                        <option value="fr">(FR) Français</option>
+                        <option value="es">(ES) Español</option>
+                        <option value="en">(EN) English</option>
+                    </select>
+                </div>
+                
+                <div class="hidden"> 
+                    <label for="contractTemplate" class="block text-sm font-medium text-gray-700 mb-2">Editor de Plantilla (Usar variables entre doble llave: <span class="font-mono text-red-500">\{\{variable\}\}</span>)</label>
+                    <textarea id="contractTemplate" class="input-area w-full p-4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 font-mono text-sm" placeholder="Escriba aquí su plantilla de contrato."></textarea>
+                </div>
+            </div>
+
+            <div class="border-b pt-6 pb-6 border-t">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-4">2. Datos para generar el contrato LP/TS</h2>
+                <p class="text-sm text-gray-500 mb-3">Introduce los detalles específicos y el código del cliente para personalizar el contrato.</p>
+                
+                <div class="mb-6">
+                    <label for="clientCodeInput" class="block text-sm font-medium text-gray-700 mb-1">Código del cliente</label>
+                    <input type="text" id="clientCodeInput" class="p-3 border border-gray-300 rounded-lg w-full sm:w-1/3 focus:ring-blue-500 focus:border-blue-500 transition duration-150 text-sm uppercase" placeholder="Ej: XX0000">
+                    <p id="dataError" class="text-red-500 text-sm mt-2 font-medium hidden">Código de cliente no encontrado.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label for="requestDate" class="block text-sm font-medium text-gray-700 mb-1">Día de Solicitud</label>
+                        <input type="date" id="requestDate" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                    </div>
+                    <div>
+                        <label for="deliveryDate" class="block text-sm font-medium text-gray-700 mb-1">Día de Entrega</label>
+                        <input type="date" id="deliveryDate" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                    </div>
+                    <div>
+                        <label for="returnDate" class="block text-sm font-medium text-gray-700 mb-1">Día de Devolución</label>
+                        <input type="date" id="returnDate" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label for="itemName" class="block text-sm font-medium text-gray-700 mb-1">Vestidos (Uno por línea)</label>
+                        <textarea id="itemName" rows="4" placeholder="Ej: Modelo Elegance\nModelo Sirena\nModelo Clásico" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150"></textarea>
+                    </div>
+                    <div>
+                        <label for="unitPrice" class="block text-sm font-medium text-gray-700 mb-1">Precio Unitario</label>
+                        <input type="text" id="unitPrice" placeholder="Ej: 500.00 EUR" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                    </div>
+                    <div>
+                        <label for="totalPrice" class="block text-sm font-medium text-gray-700 mb-1">Precio Total</label>
+                        <input type="text" id="totalPrice" placeholder="Ej: 5,000.00 EUR" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                    </div>
+                </div>
+
+                <div class="text-center sm:text-left pt-4 border-t border-gray-200 mt-4">
+                    <button onclick="generateContracts()" class="w-full sm:w-auto px-8 py-3 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition duration-200 shadow-lg transform hover:scale-[1.02]">
+                        <i class="fas fa-file-export mr-2"></i> Genera el contrato TS/LP
+                    </button>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-gray-700 mb-4">3. Contrato generado</h2>
+                <div id="contractList" class="space-y-4">
+                    <p class="text-gray-500 italic">Presiona "Genera el contrato TS/LP" para comenzar.</p>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // --- Códigos de Sesión ---
+    const SESSION_CODE = "AP2025";
+
+    // --- Elementos de UI ---
+    const loginView = document.getElementById('loginView');
+    const appView = document.getElementById('appView');
+    const sessionCodeInput = document.getElementById('sessionCodeInput');
+    const loginError = document.getElementById('loginError');
+    const loginWrapper = document.getElementById('loginWrapper');
+
+
+    const clientCodeInput = document.getElementById('clientCodeInput');
+    const templateInput = document.getElementById('contractTemplate');
+    const langSelect = document.getElementById('templateLanguage');
+    const contractListDiv = document.getElementById('contractList');
+    const dataError = document.getElementById('dataError');
+    
+    // Inputs de fecha
+    const requestDateInput = document.getElementById('requestDate');
+    const deliveryDateInput = document.getElementById('deliveryDate');
+    const returnDateInput = document.getElementById('returnDate');
+    // Nuevos inputs de artículo y precio
+    const itemNameInput = document.getElementById('itemName');
+    const unitPriceInput = document.getElementById('unitPrice');
+    const totalPriceInput = document.getElementById('totalPrice');
+
+    let generatedContracts = [];
+
+    // URL LOCAL del Logo: Asume que "AP-alargado-black.png" está en la misma carpeta.
+    const logoUrl = "AP-alargado-black.png";
+    const companyTitle = "ALBERTO PALATCHI - Generador de Contratos";
+
+    // Base de datos simulada de clientes (clave: clientCode, valor: datos del cliente)
+    // ESTRUCTURA ACTUALIZADA: Se cambiaron 'amount' por 'fiscal', 'currency' por 'comercial', 
+    // 'service' por 'address' (descripción del servicio). Se eliminaron 'language' y 'city'.
+    const CLIENT_DATABASE = {
+        "IT0003": { clientCode: "IT0003", name: "D'avino", email: "carlos.perez@example.com", fiscal: "5,000", comercial: "EUR", address: "Diseño Web" },
+        "FR0114": { clientCode: "FR0114", name: "Alice Johnson", email: "alice.j@example.com", fiscal: "1,200", comercial: "USD", address: "Marketing Strategy" },
+        "DE0054": { clientCode: "DE0054", name: "François Dubois", email: "francois.d@example.com", fiscal: "3,500", comercial: "EUR", address: "Conseil Fiscal" },
+        "CUS-004": { clientCode: "CUS-004", name: "Giulia Rossi", email: "giulia.r@example.com", fiscal: "6,000", comercial: "EUR", address: "Sviluppo Software" },
+        "CUS-005": { clientCode: "CUS-005", name: "Juan Delgado", email: "juan.delgado@example.com", fiscal: "10,000", comercial: "USD", address: "Consultoría Estratégica" },
+    };
+
+
+    // Plantillas en diferentes idiomas (con variables actualizadas)
+    // Eliminadas referencias a 'city' y 'address' (calle), y 'service' reemplazado por 'address' (descripción).
+    // Añadidas variables 'fiscal' y 'comercial'.
+    const TEMPLATES = {
+        es: {
+            title: "ACUERDO DE SERVICIOS PROFESIONALES",
+            body: `
+[Fecha actual]
+
+**Fechas del Servicio:**
+* Día de Solicitud: {{requestDate}}
+* Día de Entrega Estimada: {{deliveryDate}}
+* Día de Devolución (Si aplica): {{returnDate}}
+
+Estimado/a {{name}}, con CÓDIGO DE CLIENTE: {{clientCode}}
+La Empresa A se complace en ofrecerle un contrato para la prestación de Servicios Profesionales.
+
+**DETALLES DEL CONTRATO:**
+1.  **Objeto Principal:** Suministro del servicio de {{address}}.
+2.  **Vestidos:**
+{{itemName}}
+3.  **Precio Unitario:** {{unitPrice}}
+4.  **Monto Total Acordado:** {{totalPrice}}
+
+**Datos Adicionales del Cliente:**
+* Referencia Fiscal: {{fiscal}}
+* Referencia Comercial: {{comercial}}
+
+Al generar este documento, usted acepta los términos y condiciones de este acuerdo.
+
+Atentamente,
+
+Empresa A
+`
+        },
+        en: {
+            title: "PROFESSIONAL SERVICES AGREEMENT",
+            body: `
+[Current Date]
+
+**Service Dates:**
+* Request Date: {{requestDate}}
+* Estimated Delivery Date: {{deliveryDate}}
+* Return Date (If applicable): {{returnDate}}
+
+Dear {{name}}, with CLIENT CODE: {{clientCode}}
+Company A is pleased to offer you a contract for the provision of Professional Services.
+
+**CONTRACT DETAILS:**
+1.  **Main Object:** Supply of the {{address}} service.
+2.  **Dresses:**
+{{itemName}}
+3.  **Unit Price:** {{unitPrice}}
+4.  **Agreed Total Amount:** {{totalPrice}}
+
+**Additional Client Data:**
+* Fiscal Reference: {{fiscal}}
+* Commercial Reference: {{comercial}}
+
+By generating this document, you accept the terms and conditions of this agreement.
+
+Sincerely,
+
+Company A
+`
+        },
+        fr: {
+            title: "ACCORD DE SERVICES PROFESSIONNELS",
+            body: `
+[Date actuelle]
+
+**Dates du Service:**
+* Date de Demande: {{requestDate}}
+* Date de Livraison Estimée: {{deliveryDate}}
+* Date de Retour (Si applicable): {{returnDate}}
+
+Cher/Chère {{name}}, avec CODE CLIENT: {{clientCode}}
+La Société A a le plaisir de vous proposer un contrat de prestation de Services Professionnels.
+
+**DÉTAILS DU CONTRAT:**
+1.  **Objet Principal:** Fourniture du service de {{address}}.
+2.  **Robes:**
+{{itemName}}
+3.  **Prix Unitaire:** {{unitPrice}}
+4.  **Montant Total Convenu:** {{totalPrice}}
+
+**Données Supplémentaires du Client:**
+* Référence Fiscale: {{fiscal}}
+* Référence Commerciale: {{comercial}}
+
+En générant ce document, vous acceptez les termes et conditions de cet accord.
+
+Cordialement,
+
+Société A
+`
+        },
+        it: {
+            title: "ACCORDO DI SERVIZI PROFESSIONALI",
+            body: `
+[Data odierna]
+
+**Date del Servizio:**
+* Data della Richiesta: {{requestDate}}
+* Data di Consegna Stimata: {{deliveryDate}}
+* Data di Restituzione (Se applicabile): {{returnDate}}
+
+Egregio/a {{name}}, con CODICE CLIENTE: {{clientCode}}
+La Società A è lieta di offrirLe un contratto per la fornitura di Servizi Professionali.
+
+**DETTAGLI DEL CONTRATTO:**
+1.  **Objeto Principale:** Fornitura del servizio de {{address}}.
+2.  **Abiti:**
+{{itemName}}
+3.  **Prezzo Unitario:** {{unitPrice}}
+4.  **Importo Totale Concordato:** {{totalPrice}}
+
+**Dati Aggiuntivi del Cliente:**
+* Riferimento Fiscale: {{fiscal}}
+* Riferimento Commerciale: {{comercial}}
+
+Generando questo documento, Lei accetta i termini e le condizioni del presente accordo.
+
+Cordiali saluti,
+
+Società A
+`
+        }
+    };
+
+
+    // --- Funciones de Lógica de Acceso ---
+
+    /**
+     * Maneja el intento de inicio de sesión.
+     */
+    function handleLogin() {
+        const enteredCode = sessionCodeInput.value.trim().toUpperCase();
+        if (enteredCode === SESSION_CODE) {
+            loginWrapper.classList.add('hidden'); // Oculta el wrapper de login (que centraba el contenido)
+            appView.classList.remove('hidden');
+            initApp();
+        } else {
+            loginError.textContent = "Código incorrecto. Inténtalo de nuevo.";
+            loginError.classList.remove('hidden');
+            sessionCodeInput.value = '';
+        }
+    }
+
+
+    // --- Funciones de Inicialización y Carga de Plantilla ---
+
+    /**
+     * Inicializa la cabecera de la aplicación con el logo y el título.
+     * Esta función ya no añade nada a la UI del HTML, solo se usa para inicializar variables
+     * o lógica si fuera necesario.
+     */
+    function setupHeader() {
+        // En este punto, no se añade nada al DOM.
+        console.log("Header setup complete. Logo ready for PDF generation.");
+    }
+
+    /**
+     * Convierte una fecha a formato YYYY-MM-DD para inputs.
+     */
+    function formatDateForInput(date) {
+        const d = new Date(date);
+        let month = '' + (d.getMonth() + 1);
+        let day = '' + d.getDate();
+        const year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    /**
+     * Carga la plantilla inicial y establece el código de cliente y fechas de muestra.
+     */
+    function initApp() {
+        setupHeader(); // Llama a setupHeader (que no hace cambios visibles en el DOM)
+        clientCodeInput.value = "CUS-004"; // Código de cliente de ejemplo (Italiano)
+        itemNameInput.value = "Vestido de Novia Modelo 'Elegance'"; // Valor por defecto
+        unitPriceInput.value = "500.00 EUR"; // Valor por defecto
+        totalPriceInput.value = "5,000.00 EUR"; // Valor por defecto
+        
+        loadTemplate();
+
+        // Establecer fechas por defecto para usabilidad
+        const today = new Date();
+        const oneWeekLater = new Date(today);
+        oneWeekLater.setDate(today.getDate() + 7);
+        const twoWeeksLater = new Date(today);
+        twoWeeksLater.setDate(today.getDate() + 14);
+
+        requestDateInput.value = formatDateForInput(today);
+        deliveryDateInput.value = formatDateForInput(oneWeekLater);
+        returnDateInput.value = formatDateForInput(twoWeeksLater);
+    }
+
+    /**
+     * Carga la plantilla seleccionada en el editor.
+     */
+    function loadTemplate() {
+        const lang = langSelect.value;
+        templateInput.value = TEMPLATES[lang].body.trim();
+        // Cargar el nombre del item de ejemplo según el idioma
+        if (lang === 'en') {
+            itemNameInput.placeholder = "Eg: Wedding Dress Model 'Elegance'\nSecond Dress Model 'Vintage'";
+        } else if (lang === 'fr') {
+            itemNameInput.placeholder = "Ej: Robe de Mariée Modèle 'Élégance'\nDeuxième Robe Modèle 'Vintage'";
+        } else if (lang === 'it') {
+            itemNameInput.placeholder = "Ej: Abito da Sposa Modello 'Eleganza'\nSecondo Abito Modello 'Vintage'";
+        } else {
+            itemNameInput.placeholder = "Ej: Vestido de Novia Modelo 'Elegance'\nSegundo Vestido Modèle 'Vintage'";
+        }
+    }
+
+    // --- Funciones de Generación y Personalización (por código) ---
+
+    /**
+     * Busca el cliente por código y genera UN contrato.
+     */
+    function generateContracts() {
+        dataError.classList.add('hidden');
+        generatedContracts = [];
+        const clientCode = clientCodeInput.value.trim().toUpperCase();
+
+        // Obtener fechas en formato YYYY-MM-DD
+        const requestDateRaw = requestDateInput.value;
+        const deliveryDateRaw = deliveryDateInput.value;
+        const returnDateRaw = returnDateInput.value;
+        
+        // Obtener nuevos campos
+        const itemName = itemNameInput.value.trim();
+        const unitPrice = unitPriceInput.value.trim();
+        const totalPrice = totalPriceInput.value.trim();
+
+
+        // 1. Validaciones
+        if (!clientCode) {
+            dataError.textContent = "Por favor, introduce un código de cliente.";
+            dataError.classList.remove('hidden');
+            return;
+        }
+        if (!requestDateRaw || !deliveryDateRaw || !returnDateRaw) {
+            dataError.textContent = "Por favor, selecciona las tres fechas (Solicitud, Entrega y Devolución).";
+            dataError.classList.remove('hidden');
+            return;
+        }
+        if (!itemName || !unitPrice || !totalPrice) {
+            dataError.textContent = "Por favor, rellena los campos de Descripción, Precio Unitario y Precio Total.";
+            dataError.classList.remove('hidden');
+            return;
+        }
+
+        const personDataFromDB = CLIENT_DATABASE[clientCode];
+        
+        if (!personDataFromDB) {
+            dataError.textContent = `Código de cliente "${clientCode}" no encontrado en la base de datos simulada.`;
+            dataError.classList.remove('hidden');
+            contractListDiv.innerHTML = '<p class="text-gray-500 italic">Presiona "Genera el contrato TS/LP" para comenzar.</p>';
+            return;
+        }
+
+        // 2. Obtener la plantilla y el título del idioma seleccionado en el desplegable
+        const langKey = langSelect.value;
+        const masterTemplate = TEMPLATES[langKey].body; 
+        const templateTitle = TEMPLATES[langKey].title;
+
+        // Determinar locale para formatear fechas
+        let locale = 'es-ES';
+        switch (langKey) {
+            case 'es': locale = 'es-ES'; break;
+            case 'en': locale = 'en-US'; break;
+            case 'fr': locale = 'fr-FR'; break;
+            case 'it': locale = 'it-IT'; break;
+        }
+        const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
+        // 3. Formatear las fechas seleccionadas
+        const requestDateFormatted = new Date(requestDateRaw).toLocaleDateString(locale, dateOptions);
+        const deliveryDateFormatted = new Date(deliveryDateRaw).toLocaleDateString(locale, dateOptions);
+        const returnDateFormatted = new Date(returnDateRaw).toLocaleDateString(locale, dateOptions);
+        
+        // 4. Formatear los ítems del textarea para que aparezcan como una lista en el contrato.
+        // Reemplazamos los saltos de línea con un marcador de lista.
+        const formattedItems = itemName.split('\n')
+                                       .map(item => item.trim())
+                                       .filter(item => item.length > 0)
+                                       .map(item => `* ${item}`)
+                                       .join('\n');
+
+
+        // 5. Combinar datos del cliente y fechas/precios para la sustitución
+        // Aplicamos NEGRITA (**) solo a los datos que son introducidos manualmente en la Sección 2.
+        let personData = {
+            // Datos rellenados manualmente (Código de Cliente, Fechas, Item/Precios) -> EN NEGRITA
+            clientCode: `**${personDataFromDB.clientCode}**`,
+            requestDate: `**${requestDateFormatted}**`,
+            deliveryDate: `**${deliveryDateFormatted}**`,
+            returnDate: `**${returnDateFormatted}**`,
+            itemName: `**${formattedItems}**`, // Usamos la lista formateada
+            unitPrice: `**${unitPrice}**`,
+            totalPrice: `**${totalPrice}**`,
+
+            // Datos de la base de datos (Nombre, Email, Fiscal, Comercial, Address/Servicio) -> SIN NEGRITA
+            name: personDataFromDB.name, 
+            email: personDataFromDB.email, 
+            fiscal: personDataFromDB.fiscal,
+            comercial: personDataFromDB.comercial,
+            address: personDataFromDB.address, // Este campo ahora contiene la descripción del servicio.
+        };
+
+
+        let personalizedText = masterTemplate;
+
+        // 6. Reemplazar todas las variables en la plantilla
+        for (const key in personData) {
+            const regex = new RegExp(`\\{\\{${key}\\}\\}`, 'g');
+            personalizedText = personalizedText.replace(regex, personData[key]);
+        }
+
+        // 7. Reemplazar la fecha actual (que ya estaba en el código)
+        let datePlaceholderRegex;
+        switch (langKey) {
+            case 'es': datePlaceholderRegex = /\[Fecha actual\]/g; break;
+            case 'en': datePlaceholderRegex = /\[Current Date\]/g; break;
+            case 'fr': datePlaceholderRegex = /\[Date actuelle\]/g; break;
+            case 'it': datePlaceholderRegex = /\[Data odierna\]/g; break;
+            default: datePlaceholderRegex = /\[Fecha actual\]/g;
+        }
+
+        const currentDate = new Date().toLocaleDateString(locale, dateOptions);
+        personalizedText = personalizedText.replace(datePlaceholderRegex, currentDate);
+        
+        // Almacenar el único contrato generado
+        generatedContracts.push({
+            index: 0, 
+            title: templateTitle,
+            recipient: personDataFromDB.name, // Usamos el nombre original, no en negrita, para la UI
+            email: personDataFromDB.email,
+            content: personalizedText,
+            language: langKey
+        });
+
+        // 8. Renderizar la lista de resultados
+        renderContractList();
+    }
+
+    /**
+     * Renderiza la lista de contratos generados en la interfaz (ahora solo uno).
+     */
+    function renderContractList() {
+        if (generatedContracts.length === 0) {
+            contractListDiv.innerHTML = '<p class="text-gray-500 italic">Presiona "Genera el contrato TS/LP" para comenzar.</p>';
+            return;
+        }
+
+        // Solo se muestra el botón de Exportar PDF
+        contractListDiv.innerHTML = generatedContracts.map(contract => `
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                <div class="mb-3 sm:mb-0">
+                    <p class="font-bold text-blue-800">${contract.title} - ${contract.recipient}</p>
+                    <p class="text-sm text-blue-600">Email: ${contract.email} | Código: <span class="uppercase font-bold">${clientCodeInput.value.toUpperCase() || 'N/A'}</span></p>
+                </div>
+                <div class="flex flex-wrap space-x-2">
+                    <button onclick="downloadPdf(${contract.index})" class="px-3 py-1 text-sm bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-150 flex items-center mb-2 sm:mb-0">
+                        <i class="fas fa-file-pdf mr-1"></i> Exportar PDF
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+
+    // --- Funciones de Exportación ---
+
+    /**
+     * Genera y descarga el contrato como PDF.
+     * @param {number} index El índice del contrato generado.
+     */
+    function downloadPdf(index) {
+        const contract = generatedContracts[index];
+        if (!contract) return;
+
+        // Inicializar jsPDF
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        const lineHeight = 10;
+        let yPos = 20;
+        const margin = 20;
+        const maxWidth = 170; // Ancho máximo del texto
+        
+        // Cargar y dibujar el logo en el PDF usando la URL local
+        const logoWidth = 40; 
+        const logoHeight = 13; 
+        
+        // Uso de Image() para cargar la imagen asíncronamente y luego añadirla
+        const img = new Image();
+        img.onload = function() {
+            try {
+                // img.src ya está establecida a 'AP-alargado-black.png'
+                doc.addImage(img, 'PNG', margin, yPos, logoWidth, logoHeight);
+                yPos += logoHeight + lineHeight * 0.5; // Deja espacio después del logo
+                
+                // Resto del proceso de generación del PDF (ahora dentro del callback)
+                finalizePdfGeneration(doc, contract, yPos, lineHeight, margin, maxWidth);
+                
+            } catch (error) {
+                console.error("Error al añadir el logo al PDF, usando título de fallback.", error);
+                // Si la imagen falla, usamos el espacio reservado y continuamos
+                yPos += logoHeight + lineHeight * 0.5;
+                finalizePdfGeneration(doc, contract, yPos, lineHeight, margin, maxWidth);
+            }
+        };
+        img.onerror = function() {
+             console.error("Error al cargar la imagen (onerror), usando título de fallback.");
+             yPos += logoHeight + lineHeight * 0.5;
+             finalizePdfGeneration(doc, contract, yPos, lineHeight, margin, maxWidth);
+        };
+        
+        // Asegúrate de establecer la fuente del logo
+        img.src = logoUrl;
+        
+        // Función para finalizar el PDF (llamada después de cargar la imagen o si hay error)
+        function finalizePdfGeneration(doc, contract, yPos, lineHeight, margin, maxWidth) {
+             // Título del Contrato en el PDF
+            doc.setFontSize(16);
+            doc.setTextColor(0, 0, 0); 
+            doc.text(contract.title, margin, yPos);
+            yPos += lineHeight * 2;
+
+            // Contenido del Contrato
+            doc.setFontSize(11);
+            doc.setTextColor(0, 0, 0); 
+            
+            // Función mejorada para manejar los asteriscos de negrita (**) y los asteriscos de lista (*)
+            const processText = (text) => {
+                // Divide el texto manteniendo los marcadores de negrita (**...**) como elementos separados
+                const parts = text.split(/(\*\*.*?\*\*)/g).filter(part => part.length > 0);
+                
+                parts.forEach(part => {
+                    const isBold = part.startsWith('**') && part.endsWith('**');
+                    const textContent = part.replace(/\*\*/g, '');
+                    const isListItem = textContent.startsWith('* ');
+
+                    if (isBold) {
+                        doc.setFont(undefined, 'bold');
+                    } else {
+                        doc.setFont(undefined, 'normal');
+                    }
+
+                    // Manejo especial para listas
+                    if (isListItem) {
+                         // Contenido sin el marcador de viñeta
+                         const displayContent = textContent.substring(2); 
+                         const listLines = doc.splitTextToSize(displayContent, maxWidth - 10); // Menos espacio para la viñeta
+
+                         listLines.forEach((line, i) => {
+                            if (yPos > 280) { doc.addPage(); yPos = 20; }
+                            
+                            // Dibuja la viñeta (*) solo en la primera línea del elemento
+                            if (i === 0) {
+                                doc.setFont(undefined, 'normal'); 
+                                doc.text("*", margin, yPos); 
+                            }
+                            
+                            doc.setFont(undefined, isBold ? 'bold' : 'normal');
+                            doc.text(line, margin + 5, yPos); // 5mm de indentación después de la viñeta
+                            yPos += lineHeight * 0.7;
+                         });
+                    } else {
+                        // Para texto normal o campos en negrita
+                        const lines = doc.splitTextToSize(textContent, maxWidth);
+
+                        lines.forEach(line => {
+                            if (yPos > 280) { doc.addPage(); yPos = 20; }
+                            
+                            doc.setFont(undefined, isBold ? 'bold' : 'normal');
+                            doc.text(line, margin, yPos);
+                            yPos += lineHeight * 0.7;
+                        });
+                    }
+                });
+                // Dejamos un pequeño espacio entre segmentos de texto procesados
+                yPos += lineHeight * 0.3;
+            };
+
+            const paragraphs = contract.content.split('\n\n').filter(p => p.trim() !== '');
+            
+            paragraphs.forEach(paragraph => {
+                // Si el párrafo contiene el marcador de lista ('*'), lo procesamos línea por línea.
+                if (paragraph.includes('\n* ')) {
+                    const listLines = paragraph.split('\n').filter(l => l.trim().length > 0);
+                    
+                    listLines.forEach(line => {
+                        processText(line);
+                    });
+
+                } else {
+                    // Si es un párrafo normal, lo procesamos como un bloque de texto
+                    const lines = doc.splitTextToSize(paragraph.replace(/\*\*/g, ''), maxWidth); // Eliminamos ** para medir
+                    
+                    lines.forEach(line => {
+                        if (yPos > 280) { doc.addPage(); yPos = 20; }
+                        
+                        // Procesamos el texto de la línea para buscar negrita
+                        processText(line);
+                    });
+                }
+                
+                yPos += lineHeight * 0.3; 
+            });
+
+
+            // --- Se elimina el bloque de firma y pie de página de la solicitud del usuario ---
+            /*
+            yPos += 20;
+            if (yPos > 280) { doc.addPage(); yPos = 20; }
+            
+            doc.setFontSize(10);
+            doc.setTextColor(156, 163, 175); 
+            doc.text("--------------------------------------------------", margin, yPos);
+            yPos += lineHeight * 0.5;
+            doc.setFontSize(11);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Generado para: ${contract.recipient}`, margin, yPos);
+            yPos += lineHeight * 0.5;
+            doc.text("Documento final (Sin solicitud de firma electrónica)", margin, yPos);
+            */
+            // --------------------------------------------------------------------------------
+
+
+            // Guardar el PDF con un nombre descriptivo
+            const safeRecipientName = contract.recipient.replace(/\s/g, '_');
+            doc.save(`${safeRecipientName}_Contrato_${contract.language.toUpperCase()}.pdf`);
+        }
+    }
+
+    // Inicializar la aplicación al cargar
+    window.onload = setupHeader; // Inicializa el header al cargar, pero la app principal espera el login
+
+</script>
+</body>
+</html>
