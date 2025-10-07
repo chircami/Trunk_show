@@ -2567,7 +2567,7 @@ Società A
      */
     function handleLogin() {
         const enteredCode = sessionCodeInput.value.trim().toUpperCase();
-        if (enteredCode === SESSION_CODE) {
+        if (enteredCode === ENCODED_SESSION_CODE) {
             loginWrapper.classList.add('hidden'); // Oculta el wrapper de login (que centraba el contenido)
             appView.classList.remove('hidden');
             initApp();
