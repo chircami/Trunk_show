@@ -25,20 +25,24 @@
             cursor: pointer;
         }
         .logo {
-            max-height: 100px; /* Tamaño máximo para el logo en la cabecera */
-            width: auto;
+            /* CAMBIO: Aumentamos el tamaño y controlamos por ancho */
+            max-width: 500px; 
+            width: 100%;
+            height: auto;
         }
         /* Estilo para centrar el formulario de login en la pantalla negra */
         .login-wrapper {
             /* Altura mínima para centrar el contenido verticalmente */
-            min-height: 100vh; 
+            min-height: 90vh; 
             display: flex;
+            /* CAMBIO: Cambiamos a flex-direction column para apilar logo y form */
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
         /* Estilo para los elementos del login dentro del wrapper */
         .login-content {
-            max-width: 320px; /* Ancho fijo para centrar los elementos */
+            max-width: 240px; /* Ancho fijo para centrar los elementos */
             width: 100%;
         }
     </style>
@@ -47,15 +51,15 @@
 </head>
 <body>
 
-<div class="min-h-screen p-4 sm:p-8">
+<div class="min-h-screen p-4 sm:p-12">
     <div class="max-w-6xl mx-auto">
         <header id="mainHeader" class="text-center mb-8 hidden"></header>
         <div id="loginWrapper" class="login-wrapper">
+            
+            <img src="https://albertopalatchi.com/wp-content/uploads/2023/07/logo-5.png" alt="Logo" class="logo mx-auto mb-32 filter invert">
+
             <div id="loginView" class="login-content text-center">
-                
-                <img src="https://albertopalatchi.com/wp-content/uploads/2023/07/logo-5.png" alt="Logo" class="logo mx-auto mb-16 filter invert">
-                
-                <input type="password" id="sessionCodeInput" placeholder="Escribe tu código para acceder" class="py-2.5 px-3 border border-white rounded-3xl w-full text-center mb-4 focus:ring-blue-500 focus:border-blue-500 transition duration-150 bg-transparent text-white placeholder-gray-400">
+                <input type="password" id="sessionCodeInput" placeholder="Escribe tu código" class="py-2.5 px-3 border border-white rounded-3xl w-full text-center mb-4 focus:ring-white-600 focus:border-white-600 transition duration-150 bg-transparent text-white placeholder-gray-700">
                 <button id="loginButton" class="w-full px-8 py-3 bg-white text-black font-bold rounded-3xl border border-white hover:bg-black hover:text-white hover:shadow-none transition duration-200">
                     Acceder <i class="fas fa-sign-in-alt ml-2"></i>
                 </button>
@@ -63,9 +67,9 @@
             </div>
         </div>
 
-        <div id="appView" class="bg-white p-6 rounded-xl container-card space-y-8 hidden">
+        <div id="appView" class="bg-white p-4 rounded-xl container-card space-y-4 hidden"> <!-- REDUCIDO space-y-8 a space-y-4 -->
 
-            <div class="pt-2 pb-6">
+            <div class="pt-4 pb-4"> <!-- AJUSTADO pt-2 a pt-4 para el top padding -->
                 <h2 class="text-2xl font-semibold text-gray-700 mb-4">1. Idioma</h2>
                 <div class="mb-4">
                     <label for="templateLanguage" class="block text-sm font-medium text-gray-700 mb-2">Seleccionar Idioma:</label>
@@ -87,26 +91,33 @@
                 <h2 class="text-2xl font-semibold text-gray-700 mb-4">2. Datos para generar el contrato LP/TS</h2>
                 <p class="text-sm text-gray-500 mb-3">Introduce los detalles específicos y el código del cliente para personalizar el contrato.</p>
                 
-                <div class="mb-6">
-                    <label for="clientCodeInput" class="block text-sm font-medium text-gray-700 mb-1">Código del cliente</label>
-                    <input type="text" id="clientCodeInput" class="p-3 border border-gray-300 rounded-lg w-full sm:w-1/3 focus:ring-blue-500 focus:border-blue-500 transition duration-150 text-sm uppercase" placeholder="Ej: XX0000">
-                    <p id="dataError" class="text-red-500 text-sm mt-2 font-medium hidden">Código de cliente no encontrado.</p>
-                </div>
-                
+                <!-- INICIO: GRID COMBINADO para Código y Fechas -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    
+                    <!-- Código del cliente -->
                     <div>
-                        <label for="requestDate" class="block text-sm font-medium text-gray-700 mb-1">Día de Solicitud</label>
-                        <input type="date" id="requestDate" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                        <label for="clientCodeInput" class="block text-sm font-medium text-gray-700 mb-1">Código del cliente</label>
+                        <input type="text" id="clientCodeInput" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150 text-sm uppercase" placeholder="Ej: XX0000">
                     </div>
+                    
+                    <!-- Día de Entrega -->
                     <div>
                         <label for="deliveryDate" class="block text-sm font-medium text-gray-700 mb-1">Día de Entrega</label>
                         <input type="date" id="deliveryDate" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150">
                     </div>
+                    
+                    <!-- Día de Devolución -->
                     <div>
                         <label for="returnDate" class="block text-sm font-medium text-gray-700 mb-1">Día de Devolución</label>
                         <input type="date" id="returnDate" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150">
                     </div>
+                    
+                    <!-- Mensaje de error (ocupa las 3 columnas en pantallas grandes) -->
+                    <div class="md:col-span-3">
+                        <p id="dataError" class="text-red-500 text-sm mt-2 font-medium hidden">Código de cliente no encontrado.</p>
+                    </div>
                 </div>
+                <!-- FIN: GRID COMBINADO -->
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <div>
@@ -163,7 +174,7 @@
     const dataError = document.getElementById('dataError');
     
     // Inputs de fecha
-    const requestDateInput = document.getElementById('requestDate');
+    // const requestDateInput = document.getElementById('requestDate'); // ELIMINADO: Ya no existe
     const deliveryDateInput = document.getElementById('deliveryDate');
     const returnDateInput = document.getElementById('returnDate');
     // Nuevos inputs de artículo y precio
@@ -173,8 +184,8 @@
 
     let generatedContracts = [];
 
-    // **CORREGIDO**: Se ha corregido la asignación de la variable.
-    const logoUrl = "https://albertopalatchi.com/wp-content/uploads/2023/07/logo-5.png";
+    // **CAMBIO SOLICITADO**: Ruta del logo para PDF.
+    const logoUrl = "logo negro"; // RUTA ACTUALIZADA LOGO NEGRO
     const companyTitle = "";
 
     // **CORREGIDO**: Se ha cambiado "adress" por "address" para mantener la consistencia.
@@ -469,7 +480,6 @@
 [Fecha actual]
 
 **Fechas del Servicio:**
-* Día de Solicitud: {{requestDate}}
 * Día de Entrega Estimada: {{deliveryDate}}
 * Día de Devolución (Si aplica): {{returnDate}}
 
@@ -500,7 +510,6 @@ Empresa A
 [Current Date]
 
 **Service Dates:**
-* Request Date: {{requestDate}}
 * Estimated Delivery Date: {{deliveryDate}}
 * Return Date (If applicable): {{returnDate}}
 
@@ -531,7 +540,6 @@ Company A
 [Date actuelle]
 
 **Dates du Service:**
-* Date de Demande: {{requestDate}}
 * Date de Livraison Estimée: {{deliveryDate}}
 * Date de Retour (Si applicable): {{returnDate}}
 
@@ -562,7 +570,6 @@ Société A
 [Data odierna]
 
 **Date del Servizio:**
-* Data della Richiesta: {{requestDate}}
 * Data di Consegna Stimata: {{deliveryDate}}
 * Data di Restituzione (Se applicabile): {{returnDate}}
 
@@ -612,10 +619,10 @@ Società A
 
     /**
      * Inicializa la cabecera de la aplicación con el logo y el título.
+     * MODIFICADO: Se elimina la etiqueta <img> para no mostrar el logo en la vista de la aplicación.
      */
     function setupHeader() {
         mainHeader.innerHTML = `
-            <img src="${logoUrl}" alt="Logo" class="logo mx-auto mb-2 filter invert">
             <h1 class="text-xl font-bold text-white">${companyTitle}</h1>
         `;
     }
@@ -652,7 +659,7 @@ Società A
         const twoWeeksLater = new Date(today);
         twoWeeksLater.setDate(today.getDate() + 14);
 
-        requestDateInput.value = formatDateForInput(today);
+        // requestDateInput.value = formatDateForInput(today); // ELIMINADO
         deliveryDateInput.value = formatDateForInput(oneWeekLater);
         returnDateInput.value = formatDateForInput(twoWeeksLater);
     }
@@ -684,7 +691,7 @@ Società A
         generatedContracts = [];
         const clientCode = clientCodeInput.value.trim().toUpperCase();
 
-        const requestDateRaw = requestDateInput.value;
+        // const requestDateRaw = requestDateInput.value; // ELIMINADO
         const deliveryDateRaw = deliveryDateInput.value;
         const returnDateRaw = returnDateInput.value;
         
@@ -698,8 +705,9 @@ Società A
             dataError.classList.remove('hidden');
             return;
         }
-        if (!requestDateRaw || !deliveryDateRaw || !returnDateRaw) {
-            dataError.textContent = "Por favor, selecciona las tres fechas (Solicitud, Entrega y Devolución).";
+        // Se ha simplificado la validación de fechas (ahora solo se revisan 2)
+        if (!deliveryDateRaw || !returnDateRaw) {
+            dataError.textContent = "Por favor, selecciona las dos fechas (Entrega y Devolución).";
             dataError.classList.remove('hidden');
             return;
         }
@@ -733,7 +741,7 @@ Società A
         const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
         // 3. Formatear fechas
-        const requestDateFormatted = new Date(requestDateRaw).toLocaleDateString(locale, dateOptions);
+        // const requestDateFormatted = new Date(requestDateRaw).toLocaleDateString(locale, dateOptions); // ELIMINADO
         const deliveryDateFormatted = new Date(deliveryDateRaw).toLocaleDateString(locale, dateOptions);
         const returnDateFormatted = new Date(returnDateRaw).toLocaleDateString(locale, dateOptions);
         
@@ -749,7 +757,7 @@ Società A
         
         let personData = {
             clientCode: `**${personDataFromDB.clientCode}**`,
-            requestDate: `**${requestDateFormatted}**`,
+            // requestDate: `**${requestDateFormatted}**`, // ELIMINADO
             deliveryDate: `**${deliveryDateFormatted}**`,
             returnDate: `**${returnDateFormatted}**`,
             itemName: `**${formattedItems}**`,
@@ -847,6 +855,7 @@ Società A
         const img = new Image();
         img.onload = function() {
             try {
+                // El logo se añade con la nueva ruta "logo negro.png" y se centra
                 doc.addImage(img, 'PNG', xCenter, yPos, logoWidth, logoHeight);
                 yPos += logoHeight + lineHeight * 0.5;
                 finalizePdfGeneration(doc, contract, yPos, lineHeight, margin, maxWidth);
